@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Live_demo"
 include ':app'
+include ':framework'
+include ':faceunity'

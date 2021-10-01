@@ -10,12 +10,13 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.example.live_demo.utils.Global;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int NETWORK_CHECK_INTERVAL = 10000;
     private static final int MAX_PERIODIC_APP_ID_TRY_COUNT = 5;
@@ -25,10 +26,33 @@ public class MainActivity extends AppCompatActivity {
     private int mAppIdTryCount;
     private PrivacyTermsDialog termsDialog;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideStatusBar(true);
         setContentView(R.layout.activity_main);
+        initPrivacy();
         loadFragment(new HomeFragment());
+    }
+
+    private void initPrivacy() {
+        if (!preferences().getBoolean(Global.Constants.KEY_SHOW_PRIVACY, false)) {
+            termsDialog = new PrivacyTermsDialog(this);
+            termsDialog.setPrivacyTermsDialogListener(new PrivacyTermsDialog.OnPrivacyTermsDialogListener() {
+                @Override
+                public void onPositiveClick() {
+                    preferences().edit().putBoolean(Global.Constants.KEY_SHOW_PRIVACY, true).apply();
+                }
+
+                @Override
+                public void onNegativeClick() {
+                    finish();
+                }
+            });
+            termsDialog.show();
+        }
+    }
+
+    private void hideStatusBar(boolean b) {
     }
 
 
