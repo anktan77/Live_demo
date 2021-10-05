@@ -9,8 +9,9 @@ import android.opengl.GLES20;
 import android.util.Log;
 import android.view.Surface;
 
-import com.faceunity.gles.ProgramTexture2d;
-import com.faceunity.gles.core.GlUtil;
+
+import com.example.faceunity.gles.ProgramTexture2d;
+import com.example.faceunity.gles.core.GlUtil;
 
 import java.io.IOException;
 

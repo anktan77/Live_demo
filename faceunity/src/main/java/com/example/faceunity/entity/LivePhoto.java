@@ -4,7 +4,8 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.faceunity.utils.FileUtils;
+
+import com.example.faceunity.utils.FileUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

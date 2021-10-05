@@ -1,7 +1,7 @@
 package com.example.faceunity;
 
-import static com.example.faceunity.wrapper.faceunity.FU_ADM_FLAG_FLIP_X;
-import static com.example.faceunity.wrapper.faceunity.fuItemSetParam;
+import static com.faceunity.wrapper.faceunity.FU_ADM_FLAG_FLIP_X;
+import static com.faceunity.wrapper.faceunity.fuItemSetParam;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -26,7 +26,7 @@ import com.example.faceunity.param.BeautificationParam;
 import com.example.faceunity.param.MakeupParamHelper;
 import com.example.faceunity.utils.Constant;
 import com.example.faceunity.utils.FileUtils;
-import com.example.faceunity.wrapper.faceunity;
+import com.faceunity.wrapper.faceunity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,7 +51,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 3.对应的时机调用onSurfaceCreated和onSurfaceDestroyed
  * 4.处理图像时调用onDrawFrame
  */
-public class FURenderer implements com.example.faceunity.OnFUControlListener {
+public class FURenderer implements OnFUControlListener {
     private static final String TAG = FURenderer.class.getSimpleName();
     public static final int FU_ADM_FLAG_EXTERNAL_OES_TEXTURE = faceunity.FU_ADM_FLAG_EXTERNAL_OES_TEXTURE;
     private Context mContext;
@@ -215,7 +215,7 @@ public class FURenderer implements com.example.faceunity.OnFUControlListener {
             byte[] v3Data = new byte[v3.available()];
             v3.read(v3Data);
             v3.close();
-            faceunity.fuSetup(v3Data, com.faceunity.authpack.A());
+            faceunity.fuSetup(v3Data, authpack.A());
 
             /**
              * fuLoadTongueModel 识别舌头动作数据包加载

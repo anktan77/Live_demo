@@ -57,7 +57,7 @@ public class ClientProxy {
     public long sendRequest(int request, Object params) {
         switch (request) {
             case Request.APP_VERSION:
-                String ver = (String) params;
+                String ver = "3.2.1";
                 mClient.requestVersion(mReqId, APP_CODE, OS_TYPE, TERMINAL_TYPE, ver);
                 break;
             case Request.GIFT_LIST:

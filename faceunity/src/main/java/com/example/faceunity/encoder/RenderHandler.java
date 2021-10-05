@@ -7,10 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
 
-import com.faceunity.gles.ProgramTexture2d;
-import com.faceunity.gles.core.EglCore;
-import com.faceunity.gles.core.Program;
-import com.faceunity.gles.core.WindowSurface;
+import com.example.faceunity.gles.ProgramTexture2d;
+import com.example.faceunity.gles.core.EglCore;
+import com.example.faceunity.gles.core.Program;
+import com.example.faceunity.gles.core.WindowSurface;
+
 
 public final class RenderHandler implements Runnable {
     private static final String TAG = RenderHandler.class.getSimpleName();

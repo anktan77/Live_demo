@@ -11,6 +11,20 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/nav_icon_rooms_checked.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/nav_icon_rooms_normal.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/circle_white.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/live_bottom_button_beauty.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/live_bottom_button_music.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/live_bottom_button_music_light.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/mask_background.xml" value="0.26615384615384613" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/message_edit_text_bg.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/room_edit_layout_bg_dark_gray.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/room_edit_layout_bg_gray.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/round_dark_gray_bg.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/round_gray_bg.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/round_scalable_gray_bg.xml" value="0.10277777777777777" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/round_scalable_gray_bg_caution.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/round_scalable_gray_transparent_bg.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_normal.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_selected.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/white_circle.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_bg_music_icon.xml" value="0.11296296296296296" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_button_bg.xml" value="0.1" />
@@ -24,6 +38,9 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_online_user_invite_status_bg.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_online_user_invite_status_bg_activated.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_online_user_invite_status_bg_normal.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_tool_ear_monitor.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_tool_speaker.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_tool_video.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/circle_white.xml" value="0.11296296296296296" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/color_rect_blue_original.xml" value="0.11296296296296296" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/color_rect_gray_lightest.xml" value="0.1" />
@@ -65,15 +82,30 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_tool.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_tool_item.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_voice.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_live_prepare.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_single_host.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_single_host_live.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_virtual_image_select.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/dialog_privacy_terms.xml" value="0.1838768115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/fragment_me.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/fragment_room.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/fragment_room_list.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/fragment_single_host.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_bottom_button_layout.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_bottom_button_layout_light.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_participant_layout.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_participant_layout_light.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_room_dialog.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_room_dialog_single_button.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_room_list_item.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_room_setting_list_item_text_only.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/message_item_gift_layout.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/message_item_layout.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/online_user_call_invite_layout.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/product_list_item_layout.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/virtual_image_activity.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25052083333333336" />
       </map>
     </option>

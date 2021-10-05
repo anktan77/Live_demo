@@ -3,7 +3,8 @@ package com.example.live_demo.ui.actionsheets.toolactionsheet;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import io.agora.vlive.R;
+import com.example.live_demo.R;
+
 
 public class ECommerceToolActionSheet extends AbsToolActionSheet {
     private static final int[] ICON_RES_OWNER = {
