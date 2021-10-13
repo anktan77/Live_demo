@@ -26,6 +26,9 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_normal.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_selected.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/white_circle.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color_disable.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color_normal.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_bg_music_icon.xml" value="0.11296296296296296" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_button_bg.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable/action_sheet_button_bg_activated.xml" value="0.1" />
@@ -82,8 +85,11 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_tool.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_tool_item.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_voice.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_about.xml" value="0.2151268115942029" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_disclaimer.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_live_prepare.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_modify_user_name.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_single_host.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_single_host_live.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_virtual_image_select.xml" value="0.23369565217391305" />

@@ -1,66 +1,122 @@
 package com.example.live_demo.ui.main.fragments;
 
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.example.live_demo.R;
+import com.example.live_demo.ui.live.AboutActivity;
+import com.example.live_demo.ui.live.ModifyUserNameActivity;
+import com.example.live_demo.utils.Global;
+import com.example.live_demo.utils.UserUtil;
+import com.example.live_demo.vlive.Config;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MeFragment extends AbstractFragment implements View.OnClickListener {
+    private static final String TAG = MeFragment.class.getSimpleName();
+    private static final int USER_NAME_REQUEST = 1;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private View mLayout;
+    private AppCompatTextView mNameText;
+    private AppCompatTextView mProfileTitleNameText;
 
-    public MeFragment() {
-        // Required empty public constructor
-    }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Config.UserProfile profile = config().getUserProfile();
+        mLayout = inflater.inflate(R.layout.fragment_me, container, false);
+        setUserIcon(mLayout.findViewById(R.id.user_profile_icon));
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MeFragment newInstance(String param1, String param2) {
-        MeFragment fragment = new MeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        mNameText = mLayout.findViewById(R.id.edit_profile_nickname);
+        mNameText.setText(profile.getUserName());
+
+        mProfileTitleNameText = mLayout.findViewById(R.id.user_profile_nickname);
+        mProfileTitleNameText.setText(profile.getUserName());
+
+        mLayout.findViewById(R.id.user_profile_nickname_setting_layout).setOnClickListener(this);
+        mLayout.findViewById(R.id.user_profile_icon_setting_layout).setOnClickListener(this);
+        mLayout.findViewById(R.id.user_profile_about_layout).setOnClickListener(this);
+        return mLayout;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        RelativeLayout titleLayout = mLayout.findViewById(R.id.profile_title_layout);
+        if (titleLayout != null) {
+            RelativeLayout.LayoutParams params =
+                    (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
+            int systemBarHeight = getContainer().getSystemBarHeight();
+            params.topMargin += systemBarHeight;
+            titleLayout.setLayoutParams(params);
         }
     }
 
+    private void setUserIcon(AppCompatImageView imageView) {
+        Config.UserProfile profile = getContainer().config().getUserProfile();
+        Drawable saved = profile.getProfileIcon();
+        RoundedBitmapDrawable drawable =
+                saved instanceof RoundedBitmapDrawable ? (RoundedBitmapDrawable) saved : null;
+
+        if (drawable == null) {
+            drawable = RoundedBitmapDrawableFactory.create(getResources(),
+                    BitmapFactory.decodeResource(getResources(),
+                            UserUtil.getUserProfileIcon(profile.getUserId())));
+            drawable.setCircular(true);
+            profile.setProfileIcon(drawable);
+        }
+
+        imageView.setImageDrawable(drawable);
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_me, container, false);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.user_profile_nickname_setting_layout:
+                goEditUserNameActivity();
+                break;
+            case R.id.user_profile_icon_setting_layout:
+                break;
+            case R.id.user_profile_about_layout:
+                gotoAboutActivity();
+                break;
+        }
+    }
+
+    private void goEditUserNameActivity() {
+        Intent intent = new Intent(getContext(), ModifyUserNameActivity.class);
+        intent.putExtra(Global.Constants.KEY_USER_NAME, config().getUserProfile().getUserName());
+        startActivityForResult(intent, USER_NAME_REQUEST);
+    }
+
+    private void gotoAboutActivity() {
+        Intent intent = new Intent(getContext(), AboutActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == USER_NAME_REQUEST) {
+            if (resultCode == Global.Constants.EDIT_USER_NAME_RESULT_DONE) {
+                String name = data == null ? "" : data.getStringExtra(Global.Constants.KEY_USER_NAME);
+                config().getUserProfile().setUserName(name);
+                mNameText.setText(name);
+                mProfileTitleNameText.setText(name);
+            }
+        }
     }
 }

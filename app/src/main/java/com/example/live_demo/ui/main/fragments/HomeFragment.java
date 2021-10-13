@@ -44,6 +44,7 @@ public class HomeFragment extends AbstractFragment implements View.OnClickListen
         view.findViewById(R.id.home_category_single_layout).setOnClickListener(this);
         view.findViewById(R.id.home_category_pk_layout).setOnClickListener(this);
 
+
         return view;
     }
 
@@ -64,9 +65,6 @@ public class HomeFragment extends AbstractFragment implements View.OnClickListen
         params = (RelativeLayout.LayoutParams) image.getLayoutParams();
         params.height = (int) (image.getMeasuredWidth() * ratio);
         image.setLayoutParams(params);
-
-
-
 
     }
 

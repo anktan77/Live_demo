@@ -636,4 +636,9 @@ Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for 
     <string name="live_room_tool_action_sheet_title_speaker">Speaker</string>
     <string name="live_room_tool_action_sheet_title_inear">EarMonitor</string>
     <string name="live_room_tool_action_sheet_title_apply">Apply</string>
+    <string name="button_text_done">Done</string>
+
+    <string name="modify_user_name_too_long">User name should not be longer than 15 letters</string>
+    <string name="modify_user_name_empty">User name cannot be empty</string>
+    <string name="modify_user_name_error">Modify user name failed</string>
 </resources>

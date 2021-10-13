@@ -26,7 +26,7 @@ public class RandomUtil {
     }
 
     public static String randomUserName(Context context) {
-        Locale defaultLocale = Locale.getDefault();
+        Locale defaultLocale = Locale.getDefault(); //đa ngôn ngữ
         if (defaultLocale.getLanguage().equals("en")) {
             return String.format(defaultLocale, "%s %s",
                     getRandomName(context), getRandomSurname(context));
