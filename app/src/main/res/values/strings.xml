@@ -641,4 +641,8 @@ Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for 
     <string name="modify_user_name_too_long">User name should not be longer than 15 letters</string>
     <string name="modify_user_name_empty">User name cannot be empty</string>
     <string name="modify_user_name_error">Modify user name failed</string>
+
+    <string name="login_email_hint">Email</string>
+
+    <string name="login_password_hint">Mật khẩu</string>
 </resources>

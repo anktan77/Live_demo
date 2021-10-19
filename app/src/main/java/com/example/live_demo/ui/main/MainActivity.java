@@ -18,6 +18,7 @@ import com.example.live_demo.protocol.model.request.UserRequest;
 import com.example.live_demo.protocol.model.response.AppVersionResponse;
 import com.example.live_demo.protocol.model.response.CreateUserResponse;
 import com.example.live_demo.protocol.model.response.GiftListResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.protocol.model.response.LoginResponse;
 import com.example.live_demo.protocol.model.response.MusicListResponse;
 import com.example.live_demo.protocol.model.response.Response;
@@ -137,6 +138,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
+    }
+
+    @Override
     public void onAppVersionResponse(AppVersionResponse response) {
         config().setVersionInfo(response.data);
         config().setAppId(response.data.config.appId);
@@ -163,9 +169,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void createUser() {
+        //random username trong class randomUtil
         String userName = RandomUtil.randomUserName(this);
+        //truyền vào config().getUserProfile()
         config().getUserProfile().setUserName(userName);
+        //lưu tên username vào lưu trữ tạm thời trên máy với mã lưu KEY_USER_NAME = "key-user-name"
         preferences().edit().putString(Global.Constants.KEY_USER_NAME, userName).apply();
+        //CREATE_USER=5, username, request api này coi như bỏ
         sendRequest(Request.CREATE_USER, new UserRequest(userName));
     }
 

@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebSettings;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -130,6 +132,8 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         IntentFilter headPhoneFilter = new IntentFilter();
         headPhoneFilter.addAction(AudioManager.ACTION_HEADSET_PLUG);
         registerReceiver(mHeadPhoneReceiver, headPhoneFilter);
+
+
     }
 
     @Override

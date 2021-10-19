@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/button_background_blue.xml" value="0.26256410256410256" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/ic_facebook.xml" value="0.26256410256410256" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/ic_side_bg.xml" value="0.26256410256410256" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/nav_home_icon_normal.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/nav_icon_home_checked.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-anydpi/nav_icon_home_normal.xml" value="0.26666666666666666" />
@@ -88,6 +91,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_about.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_disclaimer.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_live_prepare.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_login.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_modify_user_name.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_single_host.xml" value="0.23369565217391305" />

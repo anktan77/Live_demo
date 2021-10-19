@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.utils.Global;
 
 public class VirtualImageSelectActivity extends BaseActivity implements View.OnClickListener {
@@ -147,5 +148,10 @@ public class VirtualImageSelectActivity extends BaseActivity implements View.OnC
                 resultCode == LivePrepareActivity.RESULT_GO_LIVE) {
             finish();
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

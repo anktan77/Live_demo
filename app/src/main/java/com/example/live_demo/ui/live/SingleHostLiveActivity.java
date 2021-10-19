@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.example.live_demo.R;
 import com.example.live_demo.protocol.model.model.SeatInfo;
 import com.example.live_demo.protocol.model.response.EnterRoomResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.protocol.model.response.Response;
 import com.example.live_demo.ui.actionsheets.toolactionsheet.LiveRoomToolActionSheet;
 import com.example.live_demo.ui.components.CameraTextureView;
@@ -123,6 +124,11 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 
     @Override

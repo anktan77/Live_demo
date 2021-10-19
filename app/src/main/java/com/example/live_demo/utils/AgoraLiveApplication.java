@@ -36,6 +36,8 @@ import io.agora.rtc.RtcEngine;
 import io.agora.rtm.RtmClient;
 
 public class AgoraLiveApplication extends Application {
+    //khi khởi động nó sẽ chạy song song với các activity khác giúp truyền, sử dụng phương thức
+
     private static final String TAG = AgoraLiveApplication.class.getSimpleName();
     private SharedPreferences mPref;
     private Config mConfig;

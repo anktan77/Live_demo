@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 
 public class AboutActivity extends BaseActivity implements View.OnClickListener{
 
@@ -75,5 +76,10 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener{
         }
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

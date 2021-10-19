@@ -1,6 +1,9 @@
 package com.example.live_demo.protocol.model.request;
 
 public class Request {
+    // Login ASP
+    public static final int LOGIN_ASP = 99;
+
     // General purposes
     public static final int APP_VERSION = 1;
     public static final int OSS = 2;
@@ -40,6 +43,7 @@ public class Request {
     public static String getRequestString(int request) {
         switch (request) {
             case APP_VERSION: return "app_version";
+            case LOGIN_ASP: return "login_asp";
             case OSS: return "oss";
             case GIFT_LIST: return "gift_list";
             case MUSIC_LIST: return "music_list";

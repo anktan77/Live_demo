@@ -21,6 +21,7 @@ import com.example.capture.video.camera.VideoModule;
 import com.example.framework.framework.modules.channels.ChannelManager;
 import com.example.live_demo.R;
 import com.example.live_demo.framework.PreprocessorFaceUnity;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.actionsheets.BeautySettingActionSheet;
 import com.example.live_demo.ui.actionsheets.LiveRoomSettingActionSheet;
 import com.example.live_demo.ui.components.CameraTextureView;
@@ -386,5 +387,10 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
         if (view.getId() == R.id.live_prepare_policy_close) {
             findViewById(R.id.live_prepare_policy_caution_layout).setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

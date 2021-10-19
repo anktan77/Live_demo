@@ -11,6 +11,7 @@ import com.example.live_demo.protocol.interfaces.SeatService;
 import com.example.live_demo.protocol.interfaces.UserService;
 import com.example.live_demo.protocol.model.body.CreateRoomRequestBody;
 import com.example.live_demo.protocol.model.body.CreateUserBody;
+import com.example.live_demo.protocol.model.body.LoginASPBody;
 import com.example.live_demo.protocol.model.body.LoginBody;
 import com.example.live_demo.protocol.model.body.ModifyUserStateRequestBody;
 import com.example.live_demo.protocol.model.body.PkRequestBody;
@@ -29,6 +30,7 @@ import com.example.live_demo.protocol.model.response.EnterRoomResponse;
 import com.example.live_demo.protocol.model.response.GiftListResponse;
 import com.example.live_demo.protocol.model.response.GiftRankResponse;
 import com.example.live_demo.protocol.model.response.LeaveRoomResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.protocol.model.response.LoginResponse;
 import com.example.live_demo.protocol.model.response.LongResponse;
 import com.example.live_demo.protocol.model.response.ModifyUserStateResponse;
@@ -56,7 +58,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class Client {
+
     private static final String PRODUCT_URL = "https://api-solutions.sh.agoralab.co";
+    private static final String LOGIN_ASP = "http://10.0.2.2:8086";
     private static final String MSG_NULL_RESPONSE = "Response content is null";
     private static final int MAX_RESPONSE_THREAD = 10;
     private static final int DEFAULT_TIMEOUT_IN_SECONDS = 30;
@@ -87,6 +91,12 @@ public class Client {
                 .callbackExecutor(Executors.newFixedThreadPool(MAX_RESPONSE_THREAD))
                 .addConverterFactory(GsonConverterFactory.create());
 
+        Retrofit.Builder builder2 = new Retrofit.Builder()
+                .baseUrl(LOGIN_ASP)
+                .client(okHttpClient)
+                .callbackExecutor(Executors.newFixedThreadPool(MAX_RESPONSE_THREAD))
+                .addConverterFactory(GsonConverterFactory.create());
+
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(XLog::d);
             interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -112,6 +122,36 @@ public class Client {
     void removeProxyListener(ClientProxyListener listener) {
         mProxyListeners.remove(listener);
     }
+
+    void  requestLoginASP(String email, String password){
+        mUserService.requestLoginASP(new LoginASPBody(email,password)).enqueue(new Callback<LoginASPResponse>() {
+            @Override
+            public void onResponse(Call<LoginASPResponse> call, Response<LoginASPResponse> response) {
+                LoginASPResponse loginASPResponse = response.body();
+                for (ClientProxyListener listener : mProxyListeners){
+                    if (loginASPResponse == null){
+                        try{
+                            listener.onResponseError(Request.LOGIN_ASP,ERROR_NULL,
+                                    response.errorBody()==null ? MSG_NULL_RESPONSE : response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else if (loginASPResponse.code == ERROR_OK){
+                        listener.onLoginASPRespone(loginASPResponse);
+                    }else {
+                        listener.onResponseError(Request.APP_VERSION, loginASPResponse.code, loginASPResponse.msg);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<LoginASPResponse> call, Throwable t) {
+                for (ClientProxyListener listener : mProxyListeners) {
+                    listener.onResponseError(Request.LOGIN_ASP, ERROR_CONNECTION, t.getMessage());
+                }
+            }
+        });
+    }
+
 
     void requestVersion(long reqId, String appCode, int osType, int terminalType, String appVersion) {
         mGeneralService.requestAppVersion(reqId, Request.APP_VERSION,

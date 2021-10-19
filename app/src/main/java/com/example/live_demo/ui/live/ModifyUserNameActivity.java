@@ -18,6 +18,7 @@ import com.example.live_demo.R;
 import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.request.UserRequest;
 import com.example.live_demo.protocol.model.response.EditUserResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.utils.Global;
 
 public class ModifyUserNameActivity extends BaseActivity
@@ -80,6 +81,11 @@ public class ModifyUserNameActivity extends BaseActivity
             setResult(Global.Constants.EDIT_USER_NAME_RESULT_CANCEL);
             finish();
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 
     @Override

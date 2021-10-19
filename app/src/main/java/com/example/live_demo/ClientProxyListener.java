@@ -9,6 +9,7 @@ import com.example.live_demo.protocol.model.response.EnterRoomResponse;
 import com.example.live_demo.protocol.model.response.GiftListResponse;
 import com.example.live_demo.protocol.model.response.GiftRankResponse;
 import com.example.live_demo.protocol.model.response.LeaveRoomResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.protocol.model.response.LoginResponse;
 import com.example.live_demo.protocol.model.response.ModifyUserStateResponse;
 import com.example.live_demo.protocol.model.response.MusicListResponse;
@@ -20,6 +21,8 @@ import com.example.live_demo.protocol.model.response.SeatStateResponse;
 import com.example.live_demo.protocol.model.response.SendGiftResponse;
 
 public interface ClientProxyListener {
+    void onLoginASPRespone(LoginASPResponse response);
+
     void onAppVersionResponse(AppVersionResponse response);
 
     void onRefreshTokenResponse(RefreshTokenResponse refreshTokenResponse);

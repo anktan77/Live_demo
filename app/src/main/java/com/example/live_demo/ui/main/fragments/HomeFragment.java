@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.utils.Global;
 
 
@@ -99,5 +100,10 @@ public class HomeFragment extends AbstractFragment implements View.OnClickListen
         if (getContainer() != null) {
             getContainer().setNavigationSelected(R.id.navigation_rooms, bundle);
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

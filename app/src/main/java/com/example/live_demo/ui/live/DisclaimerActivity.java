@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 
 public class DisclaimerActivity extends BaseActivity {
 
@@ -32,5 +33,10 @@ public class DisclaimerActivity extends BaseActivity {
             params.topMargin += systemBarHeight;
             topLayout.setLayoutParams(params);
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

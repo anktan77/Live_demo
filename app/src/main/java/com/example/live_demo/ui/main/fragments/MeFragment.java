@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.live.AboutActivity;
 import com.example.live_demo.ui.live.ModifyUserNameActivity;
 import com.example.live_demo.utils.Global;
@@ -118,5 +119,10 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
                 mProfileTitleNameText.setText(name);
             }
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 }

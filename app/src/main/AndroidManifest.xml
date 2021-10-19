@@ -21,24 +21,32 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.live.DisclaimerActivity"
+            android:name=".ui.live.LoginActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.live.DisclaimerActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.AboutActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.ModifyUserNameActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.VirtualImageSelectActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.LivePrepareActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:keepScreenOn="true"/>
         <activity
             android:name=".ui.live.SingleHostLiveActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name"

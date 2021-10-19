@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.live.LivePrepareActivity;
 import com.example.live_demo.ui.live.SingleHostLiveActivity;
 import com.example.live_demo.ui.live.VirtualImageSelectActivity;
@@ -157,6 +158,11 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
                         Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public void onLoginASPRespone(LoginASPResponse response) {
+
     }
 
     private static class RoomAdapter extends FragmentStateAdapter {

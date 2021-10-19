@@ -3,6 +3,7 @@ package com.example.live_demo.protocol.model;
 import com.example.live_demo.ClientProxyListener;
 import com.example.live_demo.protocol.model.request.AudienceListRequest;
 import com.example.live_demo.protocol.model.request.CreateRoomRequest;
+import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.request.ModifySeatStateRequest;
 import com.example.live_demo.protocol.model.request.ModifyUserStateRequest;
 import com.example.live_demo.protocol.model.request.OssPolicyRequest;
@@ -22,7 +23,7 @@ public class ClientProxy {
     public static final int ROOM_TYPE_PK = 3;
     public static final int ROOM_TYPE_VIRTUAL_HOST = 4;
     public static final int ROOM_TYPE_ECOMMERCE = 5;
-
+    public static final int LOGIN_ASP = 6;
     public static final int PK_WAIT = 0;
     public static final int PK_IN = 1;
     public static final int PK_UNAWARE = 2;
@@ -66,6 +67,9 @@ public class ClientProxy {
             case Request.MUSIC_LIST:
                 mClient.requestMusicList(mReqId);
                 break;
+            case Request.LOGIN_ASP:
+                LoginASPRequest loginASPRequest = (LoginASPRequest) params;
+                mClient.requestLoginASP(loginASPRequest.Email,loginASPRequest.Password);
             case Request.OSS:
                 OssPolicyRequest ossRequest = (OssPolicyRequest) params;
                 mClient.requestOssPolicy(mReqId, ossRequest.token, ossRequest.type);
