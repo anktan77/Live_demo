@@ -30,12 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/home_title">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/home_category_multi_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/home_category_multi"
-                    android:scaleType="fitCenter"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/home_category_multi" />
                 <RelativeLayout
                     android:layout_width="114dp"
                     android:layout_height="wrap_content"

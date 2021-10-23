@@ -645,4 +645,20 @@ Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for 
     <string name="login_email_hint">Email</string>
 
     <string name="login_password_hint">Mật khẩu</string>
+
+    <!-- Toasts -->
+    <string name="apply_seat_success">Apply Successfully</string>
+    <string name="invite_success">Invite Successfully</string>
+
+    <string name="dialog_multi_host_leave_title">Leave</string>
+    <string name="dialog_multi_host_leave_message_owner">Do you want "%s" to leave？</string>
+    <string name="dialog_multi_host_leave_message_host">Do you want to leave？</string>
+
+    <string-array name="live_host_in_seat_operations">
+        <item>Mute</item>
+        <item>Unmute</item>
+        <item>Leave</item>
+        <item>Open</item>
+        <item>close</item>
+    </string-array>
 </resources>

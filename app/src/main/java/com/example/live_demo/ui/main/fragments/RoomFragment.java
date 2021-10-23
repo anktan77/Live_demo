@@ -178,8 +178,7 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
 //                case 2: return new PKHostInFragment();
 //                case 3: return new VirtualHostFragment();
 //                case 4: return new ECommerceFragment();
-//                default: return new HostInFragment();
-                default:return new RoomFragment();
+                default: return new HostInFragment();
             }
         }
 

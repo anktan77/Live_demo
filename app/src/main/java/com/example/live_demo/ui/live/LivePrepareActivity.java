@@ -256,9 +256,9 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
 //            case Config.LIVE_TYPE_PK_HOST:
 //                intent = new Intent(this, HostPKLiveActivity.class);
 //                break;
-//            case Config.LIVE_TYPE_MULTI_HOST:
-//                intent = new Intent(this, MultiHostLiveActivity.class);
-//                break;
+            case Config.LIVE_TYPE_MULTI_HOST:
+                intent = new Intent(this, MultiHostLiveActivity.class);
+                break;
 //            case Config.LIVE_TYPE_VIRTUAL_HOST:
 //                intent = new Intent(this, VirtualHostLiveActivity.class);
 //                break;

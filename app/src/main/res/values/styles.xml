@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="host_in_seat_dialog_item_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/live_host_in_seat_item_height</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="host_in_seat_dialog_item_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/live_host_in_seat_item_dialog_stroke_width</item>
+        <item name="android:layout_marginStart">@dimen/live_host_in_seat_item_padding</item>
+        <item name="android:layout_marginEnd">@dimen/live_host_in_seat_item_padding</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="seat_item_dialog" parent="live_room_dialog">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="nav_title_text">
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>

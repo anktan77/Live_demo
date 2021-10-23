@@ -6,7 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -20,6 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.live.MultiHostLiveActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+        </activity>
         <activity
             android:name=".ui.live.LoginActivity"
             android:exported="true" />
@@ -41,9 +49,9 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.LivePrepareActivity"
+            android:keepScreenOn="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:keepScreenOn="true"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.live.SingleHostLiveActivity"
             android:exported="true" />
@@ -55,7 +63,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

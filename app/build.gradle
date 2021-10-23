@@ -3,6 +3,15 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+        release {
+            storeFile file('azure_keystore_file')
+            storePassword 'azureKeystorePassword'
+            keyAlias = 'azure_keystore_alias'
+            keyPassword 'azureKeystorePassword'
+        }
+    }
     compileSdk 30
 
     defaultConfig {
@@ -18,6 +27,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,6 +37,11 @@ android {
     }
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
+}
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains' , module:'annotations'
 }
 
 dependencies {
