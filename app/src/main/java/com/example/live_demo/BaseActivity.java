@@ -50,9 +50,9 @@ import com.example.live_demo.ui.actionsheets.PkRoomListActionSheet;
 import com.example.live_demo.ui.actionsheets.ProductActionSheet;
 import com.example.live_demo.ui.actionsheets.VoiceActionSheet;
 import com.example.live_demo.ui.actionsheets.toolactionsheet.LiveRoomToolActionSheet;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 import com.example.live_demo.vlive.Config;
-import com.example.live_demo.vlive.agora.rtc.RtcEventHandler;
+import com.example.live_demo.vlive.shark.rtc.RtcEventHandler;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Stack;
@@ -215,6 +215,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
             case ACTION_SHEET_INVITE_AUDIENCE:
                 actionSheet = new InviteUserActionSheet(this);
                 break;
+                // show danh sách khán giả
             case ACTION_SHEET_ROOM_USER:
                 actionSheet = new LiveRoomUserListActionSheet(this);
                 break;
@@ -333,8 +334,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
         return showSingleButtonConfirmDialog(titleStr, messageStr, listener);
     }
 
-    public AgoraLiveApplication application() {
-        return (AgoraLiveApplication)  getApplication();
+    public SharkLiveApplication application() {
+        return (SharkLiveApplication)  getApplication();
     }
 
     public Config config() {

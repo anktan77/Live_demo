@@ -6,13 +6,13 @@ import com.elvishew.xlog.XLog;
 import com.example.live_demo.protocol.model.request.PKRequest;
 import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.types.PKConstant;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 
 
 public class PKServiceManager {
-    private AgoraLiveApplication mApplication;
+    private SharkLiveApplication mApplication;
 
-    public PKServiceManager(AgoraLiveApplication application) {
+    public PKServiceManager(SharkLiveApplication application) {
         this.mApplication = application;
     }
 

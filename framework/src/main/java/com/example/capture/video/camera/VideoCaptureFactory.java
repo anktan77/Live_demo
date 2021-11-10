@@ -15,6 +15,7 @@ public class VideoCaptureFactory {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 
+    // kiểm tra thông số đặc điểm máy ảnh
     private static boolean isLegacyDevice(Context context) {
         CameraManager manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {

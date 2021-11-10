@@ -1,4 +1,4 @@
-package com.example.live_demo.vlive.agora.rtc;
+package com.example.live_demo.vlive.shark.rtc;
 
 import io.agora.rtc.IRtcEngineEventHandler;
 

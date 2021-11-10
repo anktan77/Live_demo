@@ -1,14 +1,14 @@
-package com.example.live_demo.vlive.agora.rtc;
+package com.example.live_demo.vlive.shark.rtc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.agora.rtc.IRtcEngineEventHandler;
 
-public class AgoraRtcHandler extends IRtcEngineEventHandler {
+public class SharkRtcHandler extends IRtcEngineEventHandler {
     private List<RtcEventHandler> mHandlers;
 
-    public AgoraRtcHandler() {
+    public SharkRtcHandler() {
         mHandlers = new ArrayList<>();
     }
 

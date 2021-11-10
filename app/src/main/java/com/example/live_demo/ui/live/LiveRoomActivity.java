@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -17,7 +16,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebSettings;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,8 +50,8 @@ import com.example.live_demo.ui.components.bottomLayout.LiveBottomButtonLayout;
 import com.example.live_demo.utils.GiftUtil;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.vlive.Config;
-import com.example.live_demo.vlive.agora.rtm.model.GiftRankMessage;
-import com.example.live_demo.vlive.agora.rtm.model.NotificationMessage;
+import com.example.live_demo.vlive.shark.rtm.model.GiftRankMessage;
+import com.example.live_demo.vlive.shark.rtm.model.NotificationMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -470,15 +468,23 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         }
     }
 
+    // thông tin user ở trong room
     @Override
     public void onUserLayoutShowUserList(View view) {
-        // Show all user info list
+        // show dialog
+        // tabId lấy từ LiveBaseActivity xem thừ là kiểu phòng gì
+        // isHost lấy từ LiveBaseActivity xem thử có phải chủ phòng hay k;
         mRoomUserActionSheet = (LiveRoomUserListActionSheet)
                 showActionSheetDialog(ACTION_SHEET_ROOM_USER, tabIdToLiveType(tabId), isHost, true, this);
+
+        // truyền dữ liệu qua LiveRoomUserListActionSheet
         mRoomUserActionSheet.setup(proxy(), this, roomId, config().getUserProfile().getToken());
+
+        // lấy danh sách khán giả
         mRoomUserActionSheet.requestMoreAudience();
     }
 
+    // thực hiện sau khi trả về danh sách khán giả bên phía client.class
     @Override
     public void onAudienceListResponse(AudienceListResponse response) {
         List<UserProfile> userList = new ArrayList<>();

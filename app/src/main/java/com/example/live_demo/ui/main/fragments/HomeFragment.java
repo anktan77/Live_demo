@@ -82,6 +82,7 @@ public class HomeFragment extends AbstractFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        // sau khi click vào từng mục sẽ intent qua room fragment kèm theo mã là phòng gì
         int tabId;
         switch (view.getId()) {
             case R.id.home_category_single_layout:
@@ -95,6 +96,8 @@ public class HomeFragment extends AbstractFragment implements View.OnClickListen
         }
 
         Bundle bundle = new Bundle();
+
+        //Global.Constants.TAB_KEY là name để itent qua rồi nhận dữ liệu
         bundle.putInt(Global.Constants.TAB_KEY, tabId);
         if (getContainer() != null) {
             getContainer().setNavigationSelected(R.id.navigation_rooms, bundle);

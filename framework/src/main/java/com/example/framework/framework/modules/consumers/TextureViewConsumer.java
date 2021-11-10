@@ -49,6 +49,8 @@ public class TextureViewConsumer extends BaseWindowConsumer implements TextureVi
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         Log.i(TAG, "onSurfaceTextureAvailable");
         setDefault(surface, width, height);
+        // lấy camera từ CameraVideoChannel lớp con Cchannel
+        // trong CameraVideoChannel có tạo camera2
         connectChannel(CHANNEL_ID);
     }
 

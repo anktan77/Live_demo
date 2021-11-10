@@ -28,20 +28,20 @@ import com.example.live_demo.R;
 import com.example.live_demo.framework.PreprocessorFaceUnity;
 import com.example.live_demo.protocol.model.ClientProxy;
 import com.example.live_demo.vlive.Config;
-import com.example.live_demo.vlive.agora.AgoraEngine;
-import com.example.live_demo.vlive.agora.rtc.RtcEventHandler;
+import com.example.live_demo.vlive.shark.SharkEngine;
+import com.example.live_demo.vlive.shark.rtc.RtcEventHandler;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import io.agora.rtc.RtcEngine;
 import io.agora.rtm.RtmClient;
 
-public class AgoraLiveApplication extends Application {
+public class SharkLiveApplication extends Application {
     //khi khởi động nó sẽ chạy song song với các activity khác giúp truyền, sử dụng phương thức
 
-    private static final String TAG = AgoraLiveApplication.class.getSimpleName();
+    private static final String TAG = SharkLiveApplication.class.getSimpleName();
     private SharedPreferences mPref;
     private Config mConfig;
-    private AgoraEngine mAgoraEngine;
+    private SharkEngine mAgoraEngine;
     private CameraManager mCameraVideoManager;
 
     @Override
@@ -64,7 +64,7 @@ public class AgoraLiveApplication extends Application {
     }
 
     public void initEngine(String appId) {
-        mAgoraEngine = new AgoraEngine(this, appId);
+        mAgoraEngine = new SharkEngine(this, appId);
     }
 
     public RtcEngine rtcEngine() {
@@ -91,11 +91,13 @@ public class AgoraLiveApplication extends Application {
         return mCameraVideoManager;
     }
 
+    // setup camera
     private void initVideoGlobally() {
         new Thread(() -> {
             FURenderer.initFURenderer(getApplicationContext());
             PreprocessorFaceUnity preprocessor =
                     new PreprocessorFaceUnity(this);
+            // quan trọng là cái này contrustor
             mCameraVideoManager = new CameraManager(
                     this, preprocessor);
             mCameraVideoManager.setCameraStateListener(preprocessor);
@@ -106,7 +108,7 @@ public class AgoraLiveApplication extends Application {
         LogConfiguration config = new LogConfiguration.Builder()
                 .logLevel(BuildConfig.DEBUG ?
                         LogLevel.DEBUG : LogLevel.INFO)                         // Specify log level, logs below this level won't be printed, default: LogLevel.ALL
-                .tag("AgoraLive")                                               // Specify TAG, default: "X-LOG"
+                .tag("SharkLive")                                               // Specify TAG, default: "X-LOG"
                 //.t()                                                            // Enable thread info, disabled by default
                 .st(Global.Constants.LOG_CLASS_DEPTH)                           // Enable stack trace info with depth 2, disabled by default
                 // .b()                                                            // Enable border, disabled by default

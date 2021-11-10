@@ -30,9 +30,9 @@ public class VideoChannel extends HandlerThread {
     private List<IVideoConsumer> mOffScreenConsumers = new ArrayList<>();
     private IPreprocessor mPreprocessor;
 
-    // Used to rotate the image to normal direction according
-    // to texture transformation matrix and possibly surface
-    // rotation if the surface is not in natural rotation.
+    /// Được sử dụng để xoay hình ảnh theo hướng bình thường theo
+    // đến ma trận chuyển đổi kết cấu và có thể là bề mặt
+    // quay nếu bề mặt không quay tự nhiên.
     private RotateProcessor mRotateProcessor;
 
     private Handler mHandler;

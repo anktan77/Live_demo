@@ -18,7 +18,7 @@ import com.example.live_demo.R;
 import com.example.live_demo.protocol.model.model.SeatInfo;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.utils.UserUtil;
-import com.example.live_demo.vlive.agora.rtm.model.SeatStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatStateMessage;
 
 import java.util.ArrayList;
 import java.util.List;

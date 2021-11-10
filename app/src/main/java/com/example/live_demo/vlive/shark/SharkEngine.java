@@ -1,25 +1,25 @@
-package com.example.live_demo.vlive.agora;
+package com.example.live_demo.vlive.shark;
 
 import androidx.annotation.NonNull;
 
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 import com.example.live_demo.utils.UserUtil;
-import com.example.live_demo.vlive.agora.rtc.AgoraRtcHandler;
-import com.example.live_demo.vlive.agora.rtc.RtcEventHandler;
-import com.example.live_demo.vlive.agora.rtm.RtmMessageManager;
+import com.example.live_demo.vlive.shark.rtc.SharkRtcHandler;
+import com.example.live_demo.vlive.shark.rtc.RtcEventHandler;
+import com.example.live_demo.vlive.shark.rtm.RtmMessageManager;
 
 import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtm.RtmClient;
 
-public class AgoraEngine {
-    private static final String TAG = AgoraEngine.class.getSimpleName();
+public class SharkEngine {
+    private static final String TAG = SharkEngine.class.getSimpleName();
     private RtcEngine mRtcEngine;
-    private AgoraRtcHandler mRtcEventHandler = new AgoraRtcHandler();
+    private SharkRtcHandler mRtcEventHandler = new SharkRtcHandler();
 
     private RtmClient mRtmClient;
 
-    public AgoraEngine(@NonNull AgoraLiveApplication application, String appId) {
+    public SharkEngine(@NonNull SharkLiveApplication application, String appId) {
         try {
             mRtcEngine = RtcEngine.create(application, appId, mRtcEventHandler);
             mRtcEngine.enableVideo();

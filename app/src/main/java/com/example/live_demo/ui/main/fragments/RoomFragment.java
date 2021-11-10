@@ -30,7 +30,7 @@ import java.lang.ref.SoftReference;
 import java.lang.reflect.Array;
 
 public class RoomFragment extends AbstractFragment implements View.OnClickListener {
-    private static final int TAB_COUNT = 5;
+    private static final int TAB_COUNT = 3; //gốc là 5
     private static final int TAB_TEXT_VIEW_INDEX = 1;
 
     private int mCurrentTap;
@@ -46,18 +46,26 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         if (bundle != null) {
+            // nhận dữ liệu từ home fragment xem là single host hay multi host
             mCurrentTap = bundle.getInt(Global.Constants.TAB_KEY);
         } else {
+            // lấy multi host
             mCurrentTap = application().config().lastTabPosition();
         }
 
         View view = inflater.inflate(R.layout.fragment_room, container, false);
+
+        // lấy dữ liệu cho Tab trên cùng
         getTabTitles();
+
         mTabLayout = view.findViewById(R.id.room_tab_layout);
 
+        // ViewPager2: trong room fragment có thể chuyển sang tab layout solo host, multi host
         ViewPager2 viewPager = view.findViewById(R.id.room_list_pager);
         viewPager.setAdapter(new RoomAdapter(this));
 
+        // TabLayoutMediator: sử dụng với ViewPager2. nó sẽ chạy song song khi vuốt tab layout hoặc list pager
+        // hợp nhất Viewpage với tab layout
         new TabLayoutMediator(mTabLayout, viewPager, (tab, position) ->
                 tab.setText(mTabTitles[position])).attach();
 
@@ -97,6 +105,7 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
         return view;
     }
 
+    // lấy dữ liệu tên tab menu trên đầu
     private void getTabTitles() {
         mTabTitles = new String[TAB_COUNT];
         for (int i = 0; i < TAB_COUNT; i++) {
@@ -144,12 +153,14 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
         if (view.getId() == R.id.live_room_start_broadcast) {
             if (config().appIdObtained()) {
                 Class<?> activity = mCurrentTap == Global.Constants.TAB_ID_VIRTUAL ?
-                        VirtualImageSelectActivity.class :                              ////////////
+                        VirtualImageSelectActivity.class :
                         LivePrepareActivity.class;
                 Intent intent = new Intent(getActivity(), activity);
                 intent.putExtra(Global.Constants.TAB_KEY, mCurrentTap + 1);
+                //gửi qua xác nhận là phòng mình tạo
                 intent.putExtra(Global.Constants.KEY_IS_ROOM_OWNER, true);
                 intent.putExtra(Global.Constants.KEY_CREATE_ROOM, true);
+                //chuyển token của user
                 intent.putExtra(Global.Constants.KEY_ROOM_OWNER_ID,
                         getContainer().config().getUserProfile().getUserId());
                 startActivity(intent);
@@ -173,6 +184,9 @@ public class RoomFragment extends AbstractFragment implements View.OnClickListen
         @NonNull
         @Override
         public Fragment createFragment(int position) {
+
+            // return qua bên fragment nào
+            // thì onGetRoomListType ở AbsPageFragment bằng mã số multi or single ấy
             switch (position) {
                 case 1: return new SingleHostFragment();
 //                case 2: return new PKHostInFragment();

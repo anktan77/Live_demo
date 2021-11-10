@@ -33,9 +33,11 @@ public class ChannelManager {
     }
 
     private Context mContext;
+    // CHANNEL_COUNT = 3
     private VideoChannel[] mChannels = new VideoChannel[CHANNEL_COUNT];
 
     public VideoChannel connectProducer(IVideoProducer producer, int id) {
+        // đảm bảo kênh chạy
         ensureChannelRunning(id);
         mChannels[id].connectProducer(producer);
         return mChannels[id];
@@ -47,8 +49,11 @@ public class ChannelManager {
     }
 
     public VideoChannel connectConsumer(IVideoConsumer consumer, int id, int type) {
+        // tạo array lớp con
         ensureChannelRunning(id);
+        // lấy lớp con mchannel[0] = Camera Video Channel
         mChannels[id].connectConsumer(consumer, type);
+        // trả về lớp con
         return mChannels[id];
     }
 
@@ -57,9 +62,11 @@ public class ChannelManager {
         mChannels[id].disconnectConsumer(consumer);
     }
 
+    // đảm bảo kênh chạy
     public void ensureChannelRunning(int channelId) {
         checkChannelId(channelId);
-
+        // khởi tạo kênh
+        // *
         if (mChannels[channelId] == null) {
             mChannels[channelId] = createVideoChannel(channelId);
         }
@@ -99,6 +106,7 @@ public class ChannelManager {
                 null : mChannels[channelId].getPreprocessor();
     }
 
+    // tạo lớp con array channel
     private VideoChannel createVideoChannel(int id) {
         return id == ChannelID.CAMERA ?
                 new CameraVideoChannel(mContext, id) :
@@ -108,7 +116,7 @@ public class ChannelManager {
     private void checkChannelId(int channelId) {
         if (channelId < ChannelID.CAMERA || channelId > ChannelID.CUSTOM) {
             throw new IllegalArgumentException(
-                    "[ChannelManager] wrong argument: Undefined channel id");
+                    "[ChannelManager] : Id channel không xác định");
         }
     }
 

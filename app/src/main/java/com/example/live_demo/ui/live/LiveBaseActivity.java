@@ -22,13 +22,13 @@ import com.example.live_demo.R;
 import com.example.live_demo.framework.PreprocessorFaceUnity;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.vlive.Config;
-import com.example.live_demo.vlive.agora.rtc.RtcEventHandler;
-import com.example.live_demo.vlive.agora.rtm.RtmMessageListener;
-import com.example.live_demo.vlive.agora.rtm.RtmMessageManager;
-import com.example.live_demo.vlive.agora.rtm.model.GiftRankMessage;
-import com.example.live_demo.vlive.agora.rtm.model.NotificationMessage;
-import com.example.live_demo.vlive.agora.rtm.model.PKStateMessage;
-import com.example.live_demo.vlive.agora.rtm.model.SeatStateMessage;
+import com.example.live_demo.vlive.shark.rtc.RtcEventHandler;
+import com.example.live_demo.vlive.shark.rtm.RtmMessageListener;
+import com.example.live_demo.vlive.shark.rtm.RtmMessageManager;
+import com.example.live_demo.vlive.shark.rtm.model.GiftRankMessage;
+import com.example.live_demo.vlive.shark.rtm.model.NotificationMessage;
+import com.example.live_demo.vlive.shark.rtm.model.PKStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatStateMessage;
 
 import java.util.List;
 import java.util.Map;
@@ -125,6 +125,7 @@ public abstract class LiveBaseActivity extends BaseActivity
         onPermissionGranted();
     }
 
+    // owner id == user id
     private void initRoom() {
         Intent intent = getIntent();
         roomName = intent.getStringExtra(Global.Constants.KEY_ROOM_NAME);
@@ -133,6 +134,9 @@ public abstract class LiveBaseActivity extends BaseActivity
         ownerId = intent.getStringExtra(Global.Constants.KEY_ROOM_OWNER_ID);
         isHost = isOwner;
         myRtcRole = isOwner ? Constants.CLIENT_ROLE_BROADCASTER : Constants.CLIENT_ROLE_AUDIENCE;
+
+        // lấy int ví dụ (TAB_ID_MULTI = 0
+        //          TAB_ID_SINGLE = 1)
         tabId = intent.getIntExtra(Global.Constants.TAB_KEY, 0);
 
         mMessageManager = RtmMessageManager.instance();

@@ -12,8 +12,8 @@ public interface IVideoConsumer {
     void disconnectChannel(int channelId);
 
     /**
-     * Give a chance for subclasses to return a drawing target
-     * object. This object can only be either a Surface or a
+     * Tạo cơ hội cho các lớp con trả về mục tiêu bản vẽ
+     * đối tượng. Đối tượng này chỉ có thể là Surface hoặc
      * SurfaceTexture.
      * @return
      */

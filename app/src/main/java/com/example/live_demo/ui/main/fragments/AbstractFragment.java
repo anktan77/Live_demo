@@ -22,12 +22,12 @@ import com.example.live_demo.protocol.model.response.RoomListResponse;
 import com.example.live_demo.protocol.model.response.SeatStateResponse;
 import com.example.live_demo.protocol.model.response.SendGiftResponse;
 import com.example.live_demo.ui.main.MainActivity;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 import com.example.live_demo.vlive.Config;
 
 public abstract class AbstractFragment extends Fragment implements ClientProxyListener {
-    protected AgoraLiveApplication application() {
-        return (AgoraLiveApplication) getContext().getApplicationContext();
+    protected SharkLiveApplication application() {
+        return (SharkLiveApplication) getContext().getApplicationContext();
     }
 
     MainActivity getContainer() {

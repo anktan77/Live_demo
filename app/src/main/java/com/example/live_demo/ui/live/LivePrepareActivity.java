@@ -58,12 +58,14 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
     private CameraVideoChannel mCameraChannel;
     private PreprocessorFaceUnity mPreprocessor;
 
-    // If camera is to persist, the camera capture is not
-    // stopped, and we want to keep the capture and transit
-    // to next activity.
+    // Nếu máy ảnh vẫn tiếp tục, thì máy ảnh không chụp
+    // đã dừng và chúng tôi muốn giữ lại quá trình chụp và chuyển tiếp
+    // tới activity tiếp theo.
+    // Camera Persist: máy ảnh ổn định không
     private boolean mCameraPersist;
 
     private boolean mActivityFinished;
+    // Permission Granted: cho phép hay chưa
     private boolean mPermissionGranted;
 
     private int mVideoInitCount;
@@ -79,6 +81,8 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
     }
 
     private void initUI() {
+        // ẩn thanh trạng thái
+        // "không có tác dụng gì"
         hideStatusBar(false);
         setContentView(R.layout.activity_live_prepare);
 
@@ -88,10 +92,12 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
         params.topMargin += systemBarHeight;
         topLayout.setLayoutParams(params);
 
+        // random tên room
         mEditText = findViewById(R.id.room_name_edit);
         mEditText.addTextChangedListener(this);
         setRandomRoomName();
 
+        // giới hạn độ dài room name
         mNameTooLongToastMsg = String.format(getResources().getString(
                 R.string.live_prepare_name_too_long_toast_format), MAX_NAME_LENGTH);
 
@@ -111,6 +117,8 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
         mBeautyBtn.setOnClickListener(this);
         mSettingBtn.setOnClickListener(this);
 
+        // ChannelManager.ChannelID.CAMERA = 0;
+        // lấy camera2
         mCameraChannel = (CameraVideoChannel) VideoModule.instance().
                 getVideoChannel(ChannelManager.ChannelID.CAMERA);
         mPreprocessor = (PreprocessorFaceUnity) VideoModule.instance().
@@ -154,8 +162,10 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
             mEditHint.setTextColor(getResources().getColor(R.color.gray_lightest));
             mEditText.setTextColor(getResources().getColor(android.R.color.white));
             mEditLayout.setBackgroundResource(R.drawable.room_edit_layout_bg_dark_gray);
+            // startCameraCapture không quan trọng có thể bỏ
             startCameraCapture();
             mPreprocessor.onAnimojiSelected(-1);
+            // lấy camera set vào
             mLocalPreviewLayout.addView(new CameraTextureView(this));
         }
     }
@@ -184,6 +194,8 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
 
     @Override
     protected void onPermissionGranted() {
+        //nhận int là host hay multi từ roomfragment
+        //lấy TAB_ID_MULTI = 0 làm mặc định
         roomType = getIntent().getIntExtra(Global.Constants.TAB_KEY, Global.Constants.TAB_ID_MULTI);
         mPermissionGranted = true;
         initUI();

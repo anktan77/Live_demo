@@ -52,7 +52,7 @@ public class LiveHostNameLayout extends RelativeLayout {
         }
 
         LayoutParams params;
-
+        // set icon cho khung name
         mIconImageView = new AppCompatImageView(getContext());
         mIconImageView.setId(IMAGE_VIEW_ID);
         addView(mIconImageView);
@@ -66,6 +66,7 @@ public class LiveHostNameLayout extends RelativeLayout {
         params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         mIconImageView.setLayoutParams(params);
 
+        // set name cho khung name
         mNameTextView = new AppCompatTextView(getContext());
         addView(mNameTextView);
         params = (LayoutParams) mNameTextView.getLayoutParams();
@@ -84,7 +85,7 @@ public class LiveHostNameLayout extends RelativeLayout {
         } else {
             mNameTextView.setTextColor(Color.WHITE);
         }
-
+        // set cho name nó chạy ngang
         mNameTextView.setSingleLine(true);
         mNameTextView.setFocusable(true);
         mNameTextView.setFocusableInTouchMode(true);
@@ -99,6 +100,7 @@ public class LiveHostNameLayout extends RelativeLayout {
         init(false);
     }
 
+    //  onMeasure tùy chỉnh layout phù hợp với khung hình
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         setMeasuredDimension(mMaxWidth, mHeight);
@@ -107,10 +109,12 @@ public class LiveHostNameLayout extends RelativeLayout {
         super.onMeasure(widthSpec, heightSpec);
     }
 
+    // set name từ singlehostactivity or multi activity
     public void setName(String name) {
         mNameTextView.setText(name);
     }
 
+    // set drawble từ singlehostactivity or multi activity
     public void setIcon(Drawable drawable) {
         mIconImageView.setImageDrawable(drawable);
     }

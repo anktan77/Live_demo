@@ -5,13 +5,13 @@ import android.text.TextUtils;
 import com.elvishew.xlog.XLog;
 import com.example.live_demo.protocol.model.request.ProductRequest;
 import com.example.live_demo.protocol.model.request.Request;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 
 
 public class ProductServiceManager {
-    private AgoraLiveApplication mApplication;
+    private SharkLiveApplication mApplication;
 
-    public ProductServiceManager(AgoraLiveApplication application) {
+    public ProductServiceManager(SharkLiveApplication application) {
         mApplication = application;
     }
 

@@ -11,7 +11,7 @@ import com.example.live_demo.framework.PreprocessorFaceUnity;
 import com.example.live_demo.protocol.model.model.AppVersionInfo;
 import com.example.live_demo.protocol.model.model.GiftInfo;
 import com.example.live_demo.protocol.model.model.MusicInfo;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 import com.example.live_demo.utils.GiftUtil;
 import com.example.live_demo.utils.Global;
 
@@ -107,9 +107,9 @@ public class Config {
     public static final int LIVE_TYPE_VIRTUAL_HOST = 4;
     public static final int LIVE_TYPE_ECOMMERCE = 5;
 
-    private AgoraLiveApplication mApplication;
+    private SharkLiveApplication mApplication;
 
-    public Config(AgoraLiveApplication application) {
+    public Config(SharkLiveApplication application) {
         mApplication = application;
         mUserProfile = new UserProfile();
         SharedPreferences sp = mApplication.preferences();

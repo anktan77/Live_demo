@@ -34,6 +34,8 @@ public class CameraVideoChannel extends VideoChannel implements VideoCapture.OnV
 
     @Override
     protected void onChannelContextCreated() {
+        // chỗ này làm đầu tiên vì lớp cha VideoChannel chạy đa luồng, suy ra lớp con cũng chạy đa luồng
+        // lấy video cameravideo2
         mVideoCapture = VideoCaptureFactory.createVideoCapture(getChannelContext().getContext());
         mVideoCapture.setOnVideoCaptureStateListener(this);
     }
@@ -73,13 +75,19 @@ public class CameraVideoChannel extends VideoChannel implements VideoCapture.OnV
         mFrameRate = frameRate;
     }
 
+    // Handler xử lý hàng đợi
+    // CAMERA == 0
     public void startCapture() {
         if (isRunning()) {
             getHandler().post(() -> {
                 if (!mCapturedStarted) {
+                    // tạo kênh
                     mVideoCapture.connectChannel(ChannelManager.ChannelID.CAMERA);
+                    // chia sẻ sử dùng EGL framework
                     mVideoCapture.setSharedContext(getChannelContext().getEglCore().getEGLContext());
+                    //set chiều dại rộng
                     mVideoCapture.allocate(mWidth, mHeight, mFrameRate, mFacing);
+                    // bắt đầu thiết lập cameravideo2
                     mVideoCapture.startCaptureMaybeAsync(false);
                     mCapturedStarted = true;
                 }

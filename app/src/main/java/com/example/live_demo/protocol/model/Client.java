@@ -288,6 +288,8 @@ public class Client {
             @Override
             @EverythingIsNonNull
             public void onResponse(Call<CreateUserResponse> call, Response<CreateUserResponse> response) {
+
+                //trả về user id
                 CreateUserResponse createUserResponse = response.body();
                 for (ClientProxyListener listener : mProxyListeners) {
                     if (createUserResponse == null) {
@@ -298,6 +300,8 @@ public class Client {
                             e.printStackTrace();
                         }
                     } else if (createUserResponse.code == ERROR_OK) {
+
+                        //lấy user id
                         listener.onCreateUserResponse(createUserResponse);
                     } else {
                         listener.onResponseError(Request.CREATE_USER, createUserResponse.code, createUserResponse.msg);
@@ -509,6 +513,7 @@ public class Client {
         });
     }
 
+    // lấy danh sách người đang xem
     void requestAudienceList(long reqId, String token, String roomId, String nextId, int count ,int type) {
         mRoomService.requestAudienceList(token, reqId, Request.AUDIENCE_LIST,
                 roomId, nextId, count, type).enqueue(new Callback<AudienceListResponse>() {

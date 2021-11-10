@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.live_demo.R;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 
 
 public class LiveBottomButtonLayout extends RelativeLayout implements View.OnClickListener {
@@ -107,7 +107,7 @@ public class LiveBottomButtonLayout extends RelativeLayout implements View.OnCli
      * after leaving the live room
      * @param application
      */
-    public void clearStates(AgoraLiveApplication application) {
+    public void clearStates(SharkLiveApplication application) {
         application.config().setCurrentMusicIndex(-1);
     }
 

@@ -24,6 +24,7 @@ public class LiveRoomUserLayout extends RelativeLayout {
     private static final int MAX_ICON_COUNT = 4;
 
     public interface UserLayoutListener {
+        // nằm ở LiveRoom activity
         void onUserLayoutShowUserList(View view);
     }
 
@@ -56,6 +57,7 @@ public class LiveRoomUserLayout extends RelativeLayout {
         mIconLayout = layout.findViewById(R.id.icon_layout);
         mCountText = layout.findViewById(R.id.live_participant_count_text);
 
+        // click xem bao nhiêu người xem
         layout.findViewById(R.id.live_participant_total_layout)
             .setOnClickListener(view -> {
                 if (mListener != null) mListener.onUserLayoutShowUserList(view);

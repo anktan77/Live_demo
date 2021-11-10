@@ -34,6 +34,7 @@ import java.lang.reflect.Field;
 import io.agora.rtm.ErrorInfo;
 import io.agora.rtm.ResultCallback;
 
+// BaseActivity luôn thực hiện trước
 public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int NETWORK_CHECK_INTERVAL = 10000;
@@ -55,6 +56,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initPrivacy() {
+        //kiểm tra có lưu KEY_SHOW_PRIVACY vào share preferences chưa
         if (!preferences().getBoolean(Global.Constants.KEY_SHOW_PRIVACY, false)) {
             termsDialog = new PrivacyTermsDialog(this);
             termsDialog.setPrivacyTermsDialogListener(new PrivacyTermsDialog.OnPrivacyTermsDialogListener() {
@@ -123,6 +125,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    // xử lý chạy đa luồng
     private void initAsync() {
         new Thread(() -> {
             checkUpdate();
@@ -131,7 +134,9 @@ public class MainActivity extends BaseActivity {
         }).start();
     }
 
+    // tiến hành request app version (chạy đa luồng)
     private void checkUpdate() {
+        // kiểm tra appId == null thì thực hiện
         if (!config().hasCheckedVersion()) {
             sendRequest(Request.APP_VERSION, getAppVersion());
         }
@@ -141,19 +146,27 @@ public class MainActivity extends BaseActivity {
     public void onLoginASPRespone(LoginASPResponse response) {
 
     }
+    // quy trình: Override luôn thực hiện đầu tiên
 
+    // sau khi thực hiện request appid ở dòng 141
+    // thì sẽ response về onAppVersionResponse (lưu dữ liệu ở class ClientProxyListener)
     @Override
     public void onAppVersionResponse(AppVersionResponse response) {
+        // tiến hành set vào config
         config().setVersionInfo(response.data);
         config().setAppId(response.data.config.appId);
+        // set vào SharkLiveApplication
         application().initEngine(response.data.config.appId);
         mAppIdTryCount = 0;
         login();
     }
 
     private void login() {
+        // khai báo
         Config.UserProfile profile = config().getUserProfile();
+        // lấy dữ liệu trong share preferences set vào profile
         initUserFromStorage(profile);
+        // nếu profile = null
         if (!profile.isValid()) {
             createUser();
         } else {
@@ -161,6 +174,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    //lưu user profile vào Share references
     private void initUserFromStorage(Config.UserProfile profile) {
         profile.setUserId(preferences().getString(Global.Constants.KEY_PROFILE_UID, null));
         profile.setUserName(preferences().getString(Global.Constants.KEY_USER_NAME, null));
@@ -171,30 +185,48 @@ public class MainActivity extends BaseActivity {
     private void createUser() {
         //random username trong class randomUtil
         String userName = RandomUtil.randomUserName(this);
+
         //truyền vào config().getUserProfile()
         config().getUserProfile().setUserName(userName);
+
         //lưu tên username vào lưu trữ tạm thời trên máy với mã lưu KEY_USER_NAME = "key-user-name"
         preferences().edit().putString(Global.Constants.KEY_USER_NAME, userName).apply();
-        //CREATE_USER=5, username, request api này coi như bỏ
+
+        // request api để nhận id token mới,
+        // CREATE_USER = 5
         sendRequest(Request.CREATE_USER, new UserRequest(userName));
     }
 
+    // sau khi thực hiện request create user ở dòng 197
+    // thì sẽ response về onCreateUserResponse (lưu dữ liệu ở class ClientProxyListener)
+    // trả về userId
     @Override
     public void onCreateUserResponse(CreateUserResponse response) {
         createUserFromResponse(response);
         loginToServer();
     }
 
+
     private void createUserFromResponse(CreateUserResponse response) {
         Config.UserProfile profile = config().getUserProfile();
+
+        //set userid sau khi gọi api tạo user vào profile
         profile.setUserId(response.data.userId);
+
+        //lưu user id vào máy
         preferences().edit().putString(Global.Constants.KEY_PROFILE_UID, profile.getUserId()).apply();
     }
 
+    // tiến hành login server khi đã tạo user token lưu vào máy
+    // login bằng user id
     private void loginToServer() {
+        // USER_LOGIN = 7
         sendRequest(Request.USER_LOGIN, config().getUserProfile().getUserId());
     }
 
+    // sau khi thực hiện request login ở dòng 224
+    // thì sẽ response về onLoginResponse (lưu dữ liệu ở class ClientProxyListener)
+    //sau khi login và nhận data, set vào profile
     @Override
     public void onLoginResponse(LoginResponse response) {
         if (response != null && response.code == Response.SUCCESS) {
@@ -209,6 +241,7 @@ public class MainActivity extends BaseActivity {
 
     private void joinRtmServer() {
         Config.UserProfile profile = config().getUserProfile();
+        // gửi rtm token, uid
         rtmClient().login(profile.getRtmToken(), String.valueOf(profile.getAgoraUid()), new ResultCallback<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

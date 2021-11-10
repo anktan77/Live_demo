@@ -1,9 +1,9 @@
-package com.example.live_demo.vlive.agora.rtm;
+package com.example.live_demo.vlive.shark.rtm;
 
-import com.example.live_demo.vlive.agora.rtm.model.GiftRankMessage;
-import com.example.live_demo.vlive.agora.rtm.model.NotificationMessage;
-import com.example.live_demo.vlive.agora.rtm.model.PKStateMessage;
-import com.example.live_demo.vlive.agora.rtm.model.SeatStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.GiftRankMessage;
+import com.example.live_demo.vlive.shark.rtm.model.NotificationMessage;
+import com.example.live_demo.vlive.shark.rtm.model.PKStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatStateMessage;
 
 import java.util.List;
 import java.util.Map;

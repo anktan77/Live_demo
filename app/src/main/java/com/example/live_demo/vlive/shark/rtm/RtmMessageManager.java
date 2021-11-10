@@ -1,4 +1,4 @@
-package com.example.live_demo.vlive.agora.rtm;
+package com.example.live_demo.vlive.shark.rtm;
 
 import android.os.Handler;
 
@@ -7,16 +7,16 @@ import androidx.annotation.NonNull;
 import com.elvishew.xlog.XLog;
 import com.example.live_demo.protocol.model.types.PKConstant;
 import com.example.live_demo.protocol.model.types.SeatInteraction;
-import com.example.live_demo.vlive.agora.rtm.model.ChatMessage;
-import com.example.live_demo.vlive.agora.rtm.model.GiftMessage;
-import com.example.live_demo.vlive.agora.rtm.model.GiftRankMessage;
-import com.example.live_demo.vlive.agora.rtm.model.NotificationMessage;
-import com.example.live_demo.vlive.agora.rtm.model.OwnerStateMessage;
-import com.example.live_demo.vlive.agora.rtm.model.PKInvitationMessage;
-import com.example.live_demo.vlive.agora.rtm.model.PKStateMessage;
-import com.example.live_demo.vlive.agora.rtm.model.ProductStatedChangedMessage;
-import com.example.live_demo.vlive.agora.rtm.model.SeatInteractionMessage;
-import com.example.live_demo.vlive.agora.rtm.model.SeatStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.ChatMessage;
+import com.example.live_demo.vlive.shark.rtm.model.GiftMessage;
+import com.example.live_demo.vlive.shark.rtm.model.GiftRankMessage;
+import com.example.live_demo.vlive.shark.rtm.model.NotificationMessage;
+import com.example.live_demo.vlive.shark.rtm.model.OwnerStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.PKInvitationMessage;
+import com.example.live_demo.vlive.shark.rtm.model.PKStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.ProductStatedChangedMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatInteractionMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatStateMessage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

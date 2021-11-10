@@ -4,7 +4,7 @@ package com.example.live_demo.ui.main.fragments;
 import com.example.live_demo.protocol.model.ClientProxy;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.live.MultiHostLiveActivity;
-
+// giống như multihost
 public class HostInFragment extends AbsPageFragment {
     @Override
     protected int onGetRoomListType() {

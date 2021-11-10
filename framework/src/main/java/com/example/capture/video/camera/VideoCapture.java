@@ -82,9 +82,10 @@ public abstract class VideoCapture extends VideoProducer {
         pContext = context;
     }
 
-    // Allocate necessary resources for capture.
+    // tất cả phương thức này thực hiện ở VideoCaptureCamera2
     public abstract boolean allocate(int width, int height, int frameRate, int facing);
 
+    // thực hiện ở lớp VideoCaptureCamera2
     public abstract void startCaptureMaybeAsync(boolean needsPreview);
 
     // Blocks until it is guaranteed that no more frames are sent.

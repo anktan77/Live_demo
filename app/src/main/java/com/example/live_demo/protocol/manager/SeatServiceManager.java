@@ -6,7 +6,7 @@ import com.elvishew.xlog.XLog;
 import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.request.SeatInteractionRequest;
 import com.example.live_demo.protocol.model.types.SeatInteraction;
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class SeatServiceManager {
         }
     }
 
-    private AgoraLiveApplication mApplication;
+    private SharkLiveApplication mApplication;
 
     private HashMap<String, Long> mInvitingList = new HashMap<>();
 
@@ -72,7 +72,7 @@ public class SeatServiceManager {
         return !mInvitingList.isEmpty() && mInvitingList.containsKey(userId);
     }
 
-    public SeatServiceManager(AgoraLiveApplication application) {
+    public SeatServiceManager(SharkLiveApplication application) {
         mApplication = application;
     }
 

@@ -16,6 +16,7 @@ public abstract class VideoProducer implements IVideoProducer {
     @Override
     public void connectChannel(int channelId) {
         videoChannel = VideoModule.instance().connectProducer(this, channelId);
+        // quan trọng
         pChannelHandler = videoChannel.getHandler();
     }
 

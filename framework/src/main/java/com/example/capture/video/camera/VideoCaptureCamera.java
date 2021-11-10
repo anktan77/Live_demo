@@ -31,6 +31,7 @@ public class VideoCaptureCamera
 
     private int mExpectedFrameSize;
 
+    //quay camera
     private Camera mCamera;
     // Lock to mutually exclude execution of OnPreviewFrame() and {start/stop}Capture().
     private ReentrantLock mPreviewBufferLock = new ReentrantLock();
@@ -199,6 +200,7 @@ public class VideoCaptureCamera
         return true;
     }
 
+    //quay camera
     protected void startPreview() {
         Log.d(TAG, "start preview");
         pPreviewSurfaceTexture = new SurfaceTexture(pPreviewTextureId);

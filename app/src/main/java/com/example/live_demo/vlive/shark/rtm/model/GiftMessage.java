@@ -1,4 +1,4 @@
-package com.example.live_demo.vlive.agora.rtm.model;
+package com.example.live_demo.vlive.shark.rtm.model;
 
 public class GiftMessage {
     public GiftMessageData data;

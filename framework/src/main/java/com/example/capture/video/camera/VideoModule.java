@@ -12,6 +12,7 @@ import com.example.framework.framework.modules.producers.IVideoProducer;
 public class VideoModule {
     private static final String TAG = VideoModule.class.getSimpleName();
 
+    // volatile đọc từ bộ nhớ chính của máy
     private volatile static VideoModule mSelf;
     private ChannelManager mChannelManager;
     private boolean mHasInitialized;
@@ -30,11 +31,7 @@ public class VideoModule {
 
     }
 
-    /**
-     * Should be called globally once before any
-     * video channel APIs are called.
-     * @param context
-     */
+
     public void init(Context context) {
         mChannelManager = new ChannelManager(context);
         mHasInitialized = true;
@@ -64,6 +61,7 @@ public class VideoModule {
         mChannelManager.ensureChannelRunning(id);
     }
 
+    // không quan trọng
     public void stopChannel(int channelId) {
         mChannelManager.stopChannel(channelId);
     }
@@ -74,14 +72,7 @@ public class VideoModule {
         stopChannel(ChannelManager.ChannelID.CUSTOM);
     }
 
-    /**
-     * Enable the channel to capture video frames and do
-     * offscreen rendering without the onscreen consumer
-     * (Like SurfaceView or TextureView).
-     * The default is true.
-     * @param channelId
-     * @param enabled
-     */
+
     public void enableOffscreenMode(int channelId, boolean enabled) {
         mChannelManager.enableOffscreenMode(channelId, enabled);
     }

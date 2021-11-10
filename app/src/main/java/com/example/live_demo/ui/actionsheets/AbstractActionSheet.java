@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.example.live_demo.utils.AgoraLiveApplication;
+import com.example.live_demo.utils.SharkLiveApplication;
 
 public abstract class AbstractActionSheet extends RelativeLayout {
     //bảng hành động trừu tượng
@@ -28,7 +28,7 @@ public abstract class AbstractActionSheet extends RelativeLayout {
     }
     public abstract void setActionSheetListener(AbsActionSheetListener listener);
 
-    protected AgoraLiveApplication application() {
-        return (AgoraLiveApplication) getContext().getApplicationContext();
+    protected SharkLiveApplication application() {
+        return (SharkLiveApplication) getContext().getApplicationContext();
     }
 }

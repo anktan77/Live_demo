@@ -52,6 +52,8 @@ public class LiveRoomUserListActionSheet extends AbstractActionSheet {
         mAdapter = new RoomUserAdapter();
         recyclerView.setAdapter(mAdapter);
 
+        // phát hiện nếu cuộn đến cuối danh sách thì
+        // refresh lại danh sách thì load lại khán giả
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -73,6 +75,7 @@ public class LiveRoomUserListActionSheet extends AbstractActionSheet {
         mToken = token;
     }
 
+    // lấy danh sách khán giả
     public void requestMoreAudience() {
         AudienceListRequest request = new AudienceListRequest(
                 mToken, mRoomId, mAdapter.getLastUserId(),
@@ -87,6 +90,7 @@ public class LiveRoomUserListActionSheet extends AbstractActionSheet {
         }
     }
 
+    // nhận danh sách khán giả từ LiveRoomActivity
     public void appendUsers(List<UserProfile> userList) {
         mAdapter.append(userList);
     }
@@ -95,6 +99,7 @@ public class LiveRoomUserListActionSheet extends AbstractActionSheet {
         private List<UserProfile> mUserList = new ArrayList<>();
 
         public void append(List<UserProfile> userList) {
+            // add danh sách khán giả vào list
             mUserList.addAll(userList);
             notifyDataSetChanged();
         }

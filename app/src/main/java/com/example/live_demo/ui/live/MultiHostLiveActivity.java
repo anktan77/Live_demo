@@ -1,14 +1,12 @@
 package com.example.live_demo.ui.live;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -47,7 +45,7 @@ import com.example.live_demo.ui.components.VoiceIndicateGifView;
 import com.example.live_demo.ui.components.bottomLayout.LiveBottomButtonLayout;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.utils.UserUtil;
-import com.example.live_demo.vlive.agora.rtm.model.SeatStateMessage;
+import com.example.live_demo.vlive.shark.rtm.model.SeatStateMessage;
 
 import java.util.ArrayList;
 import java.util.List;

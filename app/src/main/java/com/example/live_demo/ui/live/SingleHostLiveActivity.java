@@ -50,6 +50,7 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
 
         participants = findViewById(R.id.single_live_participant);
         participants.init();
+        // thống kê user có trong room
         participants.setUserLayoutListener(this);
 
         bottomButtons = findViewById(R.id.single_live_bottom_layout);
@@ -81,8 +82,8 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
         rtcStatsView = findViewById(R.id.single_host_rtc_stats);
         rtcStatsView.setCloseListener(view -> rtcStatsView.setVisibility(View.GONE));
 
-        // In case that the UI is not relocated because
-        // the permission request dialog consumes the chance
+        // Trong trường hợp giao diện người dùng không được di dời vì
+        // hộp thoại yêu cầu quyền sử dụng
         onGlobalLayoutCompleted();
     }
 
@@ -138,8 +139,8 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
             ownerId = response.data.room.owner.userId;
             ownerRtcUid = response.data.room.owner.uid;
 
-            // Determine if I am the owner of a host here because
-            // I may leave the room unexpectedly and come once more.
+            // Xác định xem tôi có phải là chủ sở hữu của máy chủ lưu trữ ở đây không vì
+            // Tôi có thể rời khỏi phòng đột xuất và đến một lần nữa.
             String myId = config().getUserProfile().getUserId();
             if (!isOwner && myId.equals(response.data.room.owner.userId)) {
                 isOwner = true;

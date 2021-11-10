@@ -108,6 +108,7 @@ public class ClientProxy {
                 break;
             case Request.AUDIENCE_LIST:
                 AudienceListRequest audienceRequest = (AudienceListRequest) params;
+                // audienceRequest.token == config().getUserProfile().getToken()
                 mClient.requestAudienceList(mReqId, audienceRequest.token, audienceRequest.roomId,
                         audienceRequest.nextId, audienceRequest.count, audienceRequest.type);
                 break;

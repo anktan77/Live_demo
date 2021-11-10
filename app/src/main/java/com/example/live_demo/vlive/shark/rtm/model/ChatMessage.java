@@ -1,6 +1,6 @@
-package com.example.live_demo.vlive.agora.rtm.model;
+package com.example.live_demo.vlive.shark.rtm.model;
 
-import com.example.live_demo.vlive.agora.rtm.RtmMessageManager;
+import com.example.live_demo.vlive.shark.rtm.RtmMessageManager;
 
 public class ChatMessage extends AbsRtmMessage{
     public ChatMessageData data;

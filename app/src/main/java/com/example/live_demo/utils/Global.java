@@ -75,8 +75,8 @@ public class Global {
                 R.string.home_category_title_multi,
                 R.string.home_category_title_single,
                 R.string.home_category_title_pk,
-                R.string.home_category_title_virtual_host,
-                R.string.home_category_title_ecommerce
+//                R.string.home_category_title_virtual_host,
+//                R.string.home_category_title_ecommerce
         };
 
         public static final String[] RESOLUTIONS_MULTI_HOST_TEXT = {

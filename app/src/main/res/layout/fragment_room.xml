@@ -11,19 +11,19 @@
         android:layout_height="@dimen/room_tab_height"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        app:tabTextAppearance="@style/room_tab_title_text"
         app:tabGravity="fill"
+        app:tabIndicatorColor="@color/blue_original"
+        app:tabMode="scrollable"
         app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@android:color/black"
-        app:tabTextColor="@color/gray_darkest"
-        app:tabIndicatorColor="@color/blue_original"
-        app:tabMode="scrollable"/>
+        app:tabTextAppearance="@style/room_tab_title_text"
+        app:tabTextColor="@color/gray_darkest" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/room_list_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/room_tab_layout"/>
+        android:layout_below="@id/room_tab_layout" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/live_room_start_broadcast"
@@ -31,10 +31,10 @@
         android:layout_height="@dimen/start_broadcast_btn_size"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:src="@drawable/start_broadcast_btn"
-        android:scaleType="centerCrop"/>
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:scaleType="centerCrop"
+        android:src="@drawable/start_broadcast_btn" />
 </RelativeLayout>

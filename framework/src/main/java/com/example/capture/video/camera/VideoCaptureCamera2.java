@@ -251,8 +251,8 @@ public class VideoCaptureCamera2 extends VideoCapture {
         }
     }
 
-    // Finds the closest Size to (|width|x|height|) in |sizes|, and returns it or null.
-    // Ignores |width| or |height| if either is zero (== don't care).
+    // Tìm Kích thước gần nhất với (| chiều rộng | x | chiều cao |) trong | kích thước |, và trả về giá trị này hoặc null.
+    // Bỏ qua | width | hoặc | chiều cao | nếu một trong hai là 0 (== không quan tâm).
     private static Size findClosestSizeInArray(Size[] sizes, int width, int height) {
         if (sizes == null) return null;
         Size closestSize = null;
@@ -384,6 +384,7 @@ public class VideoCaptureCamera2 extends VideoCapture {
                 mNeedsPreview = needsPreview;
                 changeCameraStateAndNotify(CameraState.OPENING);
                 if (pPreviewTextureId == -1) pPreviewTextureId = GlUtil.createTextureObject(GLES11Ext.GL_TEXTURE_EXTERNAL_OES);
+                // mở camera
                 if (pPreviewTextureId != -1) startPreview();
             }
         }
@@ -393,6 +394,7 @@ public class VideoCaptureCamera2 extends VideoCapture {
         Log.d(TAG, "startPreview");
         final CameraStateListener stateListener = new CameraStateListener();
         try {
+            // mở camera
             mCameraManager.openCamera(mCamera2Id, stateListener, pChannelHandler);
         } catch (CameraAccessException | IllegalArgumentException | SecurityException ex) {
             Log.e(TAG, "allocate: manager.openCamera: ", ex);

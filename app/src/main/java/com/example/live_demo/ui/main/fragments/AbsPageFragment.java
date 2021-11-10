@@ -108,6 +108,8 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
         });
 
         mNoDataBg = layout.findViewById(R.id.no_data_bg);
+
+        //hiển thị toast nếu lỗi mạng
         mNetworkErrorBg = layout.findViewById(R.id.network_error_bg);
         mNetworkErrorBg.setVisibility(View.GONE);
 
@@ -129,6 +131,7 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
         mHandler.removeCallbacks(mPageRefreshRunnable);
     }
 
+    // Runnable chạy đa luồng, vào là chạy
     private class PageRefreshRunnable implements Runnable {
         @Override
         public void run() {
@@ -169,22 +172,31 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
         if (nextId == null) mAdapter.clear(false);
         refreshPage(nextId, REQ_ROOM_COUNT, onGetRoomListType(), null);
     }
-
+    // trả về nextid == roomId
+    // quan trọng nhất là trả về roomId và roomName để bỏ vào recyclerView
     private void refreshPage(String nextId, int count, int type, Integer pkState) {
+        // lấy token của user
         RoomListRequest request = new RoomListRequest(
                 getContainer().config().getUserProfile().getToken(),
                 nextId, count, type, pkState);
+
+        // gửi qua Client để request api
         getContainer().proxy().sendRequest(Request.ROOM_LIST, request);
     }
 
+    // trả về các room đang live
+    // nó xử lý đa luồng, nó sự cùng thực hiện khi khởi động ứng dụng
+    // cùng thực hiện tại 1 thời điểm
     @Override
     public void onRoomListResponse(RoomListResponse response) {
         final List<RoomInfo> list = response.data.list;
+
+        // runOnUiThread thực hiện đa luồng, cùng run khi load main activity
         getContainer().runOnUiThread(() -> {
             mNetworkErrorBg.setVisibility(View.GONE);
-            // Next id being empty indicates this is the
-            // start of room list and we need to refresh
-            // the whole page.
+
+            // nextid == roomId
+            // add vào adapter, TextUtils.isEmpty(response.data.nextId) kiểm tra nextId có rỗng k
             mAdapter.append(list, TextUtils.isEmpty(response.data.nextId));
             checkRoomListEmpty();
             if (mSwipeRefreshLayout.isRefreshing()) {
@@ -211,6 +223,8 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
             holder.name.setText(info.roomName);
             holder.count.setText(String.valueOf(info.currentUsers));
             holder.layout.setBackgroundResource(UserUtil.getUserProfileIcon(info.roomId));
+
+            // GetRoomListType lấy từ HostInFragment or singlehostfragment
             holder.itemView.setOnClickListener((view) -> {
                 if (config().appIdObtained() && position < mRoomList.size()) {
                     goLiveRoom(mRoomList.get(position),
@@ -262,6 +276,7 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
         }
     }
 
+    // roomType là kiểu host hay multi
     private void goLiveRoom(RoomInfo info, int roomType) {
         Intent intent = new Intent(getActivity(), getLiveActivityClass());
         intent.putExtra(Global.Constants.TAB_KEY, roomType);
