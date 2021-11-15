@@ -4,6 +4,7 @@ import com.elvishew.xlog.XLog;
 import com.example.live_demo.BuildConfig;
 import com.example.live_demo.ClientProxyListener;
 import com.example.live_demo.protocol.interfaces.GeneralService;
+import com.example.live_demo.protocol.interfaces.LoginService;
 import com.example.live_demo.protocol.interfaces.PKService;
 import com.example.live_demo.protocol.interfaces.ProductService;
 import com.example.live_demo.protocol.interfaces.RoomService;
@@ -20,6 +21,7 @@ import com.example.live_demo.protocol.model.body.RequestModifySeatStateBody;
 import com.example.live_demo.protocol.model.body.RequestSeatInteractionBody;
 import com.example.live_demo.protocol.model.body.SendGiftBody;
 import com.example.live_demo.protocol.model.body.UserRequestBody;
+import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.response.AppVersionResponse;
 import com.example.live_demo.protocol.model.response.AudienceListResponse;
 import com.example.live_demo.protocol.model.response.BooleanResponse;
@@ -60,7 +62,7 @@ import retrofit2.internal.EverythingIsNonNull;
 public class Client {
 
     private static final String PRODUCT_URL = "https://api-solutions.sh.agoralab.co";
-    private static final String LOGIN_ASP = "http://10.0.2.2:8086";
+    private static final String LOGIN_ASP = "http://10.0.2.2:8097";
     private static final String MSG_NULL_RESPONSE = "Response content is null";
     private static final int MAX_RESPONSE_THREAD = 10;
     private static final int DEFAULT_TIMEOUT_IN_SECONDS = 30;
@@ -75,7 +77,7 @@ public class Client {
     private SeatService mSeatService;
     private PKService mPKService;
     private ProductService mProductService;
-
+    private LoginService mLoginService;
     private List<ClientProxyListener> mProxyListeners = new ArrayList<>();
 
     Client() {
@@ -105,6 +107,8 @@ public class Client {
         }
 
         Retrofit retrofit = builder.build();
+        Retrofit retrofitUser = builder2.build();
+        mLoginService = retrofitUser.create(LoginService.class);
         mGeneralService = retrofit.create(GeneralService.class);
         mRoomService = retrofit.create(RoomService.class);
         mUserService = retrofit.create(UserService.class);
@@ -123,33 +127,35 @@ public class Client {
         mProxyListeners.remove(listener);
     }
 
-    void  requestLoginASP(String email, String password){
-        mUserService.requestLoginASP(new LoginASPBody(email,password)).enqueue(new Callback<LoginASPResponse>() {
-            @Override
-            public void onResponse(Call<LoginASPResponse> call, Response<LoginASPResponse> response) {
+    void  requestLoginASP(String idPerson, String email, String name, String imageview, String phone, int coins){
+        LoginASPRequest loginASPRequest = new LoginASPRequest(idPerson,email,name,imageview,phone,coins);
+        mLoginService.requestLoginASP(loginASPRequest).enqueue(new Callback<LoginASPResponse>() {
+              @Override
+              public void onResponse(Call<LoginASPResponse> call, Response<LoginASPResponse> response) {
                 LoginASPResponse loginASPResponse = response.body();
-                for (ClientProxyListener listener : mProxyListeners){
-                    if (loginASPResponse == null){
-                        try{
-                            listener.onResponseError(Request.LOGIN_ASP,ERROR_NULL,
-                                    response.errorBody()==null ? MSG_NULL_RESPONSE : response.errorBody().string());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }else if (loginASPResponse.code == ERROR_OK){
-                        listener.onLoginASPRespone(loginASPResponse);
-                    }else {
-                        listener.onResponseError(Request.APP_VERSION, loginASPResponse.code, loginASPResponse.msg);
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call<LoginASPResponse> call, Throwable t) {
-                for (ClientProxyListener listener : mProxyListeners) {
-                    listener.onResponseError(Request.LOGIN_ASP, ERROR_CONNECTION, t.getMessage());
-                }
-            }
-        });
+                  for (ClientProxyListener listener : mProxyListeners) {
+                      if (loginASPResponse == null) {
+                          try {
+                              listener.onResponseError(Request.LOGIN_ASP, ERROR_NULL,
+                                      response.errorBody() == null ? MSG_NULL_RESPONSE : response.errorBody().string());
+                          } catch (IOException e) {
+                              e.printStackTrace();
+                          }
+                      } else if (loginASPResponse.code == ERROR_OK) {
+                          listener.onLoginASPRespone(loginASPResponse);
+                      } else {
+                          listener.onResponseError(Request.LOGIN_ASP, loginASPResponse.code, loginASPResponse.msg);
+                      }
+                  }
+              }
+
+              @Override
+              public void onFailure(Call<LoginASPResponse> call, Throwable t) {
+                  for (ClientProxyListener listener : mProxyListeners) {
+                      listener.onResponseError(Request.LOGIN_ASP, ERROR_CONNECTION, t.getMessage());
+                  }
+              }
+          });
     }
 
 

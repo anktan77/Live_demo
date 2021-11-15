@@ -25,12 +25,21 @@ public class Config {
     public static class UserProfile {
         private String userId;
         private String userName;
+        private String email;
         private String imageUrl;
         private String token;
         private String rtcToken;
         private String rtmToken;
         private long agoraUid;
         private SoftReference<Drawable> userIcon;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
         public boolean isValid() {
             return userId != null;

@@ -20,6 +20,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.capture.video.camera.CameraManager;
 import com.example.live_demo.protocol.model.ClientProxy;
+import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.response.AppVersionResponse;
 import com.example.live_demo.protocol.model.response.AudienceListResponse;
 import com.example.live_demo.protocol.model.response.CreateRoomResponse;
@@ -360,6 +361,10 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
 
     public long sendRequest(int req, Object params) {
         return proxy().sendRequest(req, params);
+    }
+
+    public void loginASP(int req, LoginASPRequest params){
+         proxy().LoginASP(req,params);
     }
 
     public void registerRtcHandler(RtcEventHandler handler) {

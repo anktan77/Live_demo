@@ -7,17 +7,18 @@
         android:id="@+id/modify_user_name_title_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/modify_user_name_title_height">
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/modify_user_name_cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:textAlignment="gravity"
             android:gravity="center_vertical"
+            android:text="@string/dialog_negative_button"
+            android:textAlignment="gravity"
             android:textColor="@color/gray_darkest"
-            android:textSize="@dimen/text_size_medium"
-            android:text="@string/dialog_negative_button"/>
+            android:textSize="@dimen/text_size_medium" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/modify_user_name_title"
             android:layout_width="wrap_content"

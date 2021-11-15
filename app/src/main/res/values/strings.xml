@@ -35,7 +35,7 @@
     <string name="privacy_website_link">https://www.agora.io/en/privacy-policy/</string>
     <string name="terms_service_title">Điều khoản dịch vụ</string>
     <string name="terms_service_link">https://www.agora.io/en/terms-of-service/</string>
-
+    <string name="profile_title">Thông tin</string>
     <string name="disclaimer_title">Kiểm tra sản phẩm thử nghiệm</string>
     <string name="disclaimer_content">&#160;&#160;&#160;&#160;Agora Live ("this product") is a test product provided by Agora. Agora enjoys the copyright and ownership of this product. It is hereby granted free of charge to anyone who obtains a copy of this product and related documentation (hereinafter referred to as "software") to try the software without limitation, including but not limited to trial, copy, modify, merge, publish, distribute, but this product shall not be used For any commercial use, you may not sublicense and/or sell copies of the software.\n\n &#160;&#160;&#160;&#160;This product is provided "as is" without any express warranty, including but not limited to guarantees of suitability, suitability for specific purposes, and non-infringement. Whether it is due to any contract, infringement or other forms of conduct related to this product or the trial of this product or other methods, Agora will not be responsible for any claims, damages or other liabilities.\n\n &#160;&#160;&#160;&#160;You are free to choose whether to try the services provided by this product. If you download, install, or try the services provided in this product, it means that you trust the owner of the product, and Agora shall not be responsible for any form of loss or injury caused by yourself or others when you try the services provided in this product for any reason.</string>
 
@@ -102,106 +102,106 @@
 
     <string name="live_room_online_user_invite_call_btn">Mời</string>
     <string name="live_room_online_user_invited_btn">Lời mời</string>
-<string name="live_room_online_user_call_agree">Đồng ý</string>
-<string name="live_room_online_user_call_reject">Từ chối</string>
-<string name="live_room_online_user_tab_all">Tất cả người tham gia</string>
-<string name="live_room_online_user_tab_application">Ứng dụng</string>
+    <string name="live_room_online_user_call_agree">Đồng ý</string>
+    <string name="live_room_online_user_call_reject">Từ chối</string>
+    <string name="live_room_online_user_tab_all">Tất cả người tham gia</string>
+    <string name="live_room_online_user_tab_application">Ứng dụng</string>
 
     <!-- dialog -->
-<string name="dialog_negative_button">Hủy Bỏ</string>
-<string name="dialog_positive_button">Xác nhận</string>
-<string name="dialog_positive_button_accept">Đồng ý</string>
-<string name="dialog_negative_button_refuse">Từ chối</string>
+    <string name="dialog_negative_button">Hủy Bỏ</string>
+    <string name="dialog_positive_button">Xác nhận</string>
+    <string name="dialog_positive_button_accept">Đồng ý</string>
+    <string name="dialog_negative_button_refuse">Từ chối</string>
 
-<string name="live_room_setting_action_sheet_title">Cài đặt</string>
-<string name="live_room_setting_title_resolution">Điều Khoản</string>
-<string name="live_room_setting_title_framerate">Tỷ lệ khung hình</string>
-<string name="live_room_setting_title_bitrate">Tốc độ đường truyền</string>
-<string name="live_room_setting_bitrate_value_format" translatable="false">%d kbps</string>
-<string name="live_room_setting_bitrate_value_default">Default</string>
+    <string name="live_room_setting_action_sheet_title">Cài đặt</string>
+    <string name="live_room_setting_title_resolution">Điều Khoản</string>
+    <string name="live_room_setting_title_framerate">Tỷ lệ khung hình</string>
+    <string name="live_room_setting_title_bitrate">Tốc độ đường truyền</string>
+    <string name="live_room_setting_bitrate_value_format" translatable="false">%d kbps</string>
+    <string name="live_room_setting_bitrate_value_default">Default</string>
 
     <!-- Live -->
-<string name="live_bottom_edit_hint">Hãy nói gì đó &#8230;</string>
-<string name="live_send_empty_message">Tin nhắn trống là không được gửi</string>
+    <string name="live_bottom_edit_hint">Hãy nói gì đó &#8230;</string>
+    <string name="live_send_empty_message">Tin nhắn trống là không được gửi</string>
 
-<string name="live_host_in_room_name_hint">Kênh&#160;&#160;</string>
-<string name="live_host_in_seat_state_open_audience">Trở thành người dẫn chương trình</string>
-<string name="live_host_in_seat_state_open_host">Mời người dẫn chương trình</string>zx
-<string name="live_host_in_seat_state_blocked">Chặn</string>
+    <string name="live_host_in_room_name_hint">Kênh&#160;&#160;</string>
+    <string name="live_host_in_seat_state_open_audience">Trở thành người dẫn chương trình</string>
+    <string name="live_host_in_seat_state_open_host">Mời người dẫn chương trình</string>zx
+    <string name="live_host_in_seat_state_blocked">Chặn</string>
 
-<string name="live_system_notification_member_joined">Đã tham gia</string>
-<string name="live_system_notification_member_left">Đã rời khỏi</string>
+    <string name="live_system_notification_member_joined">Đã tham gia</string>
+    <string name="live_system_notification_member_left">Đã rời khỏi</string>
 
     <!-- Messages -->
-<string name="live_message_gift_send">Đã gửi đi</string>
+    <string name="live_message_gift_send">Đã gửi đi</string>
 
-<string name="rtc_stats_format">Tốc độ tải: %.2f kbps%nDownstream Loss Rate: %.2f%% %nUpstream Bitrate: %.2f kbps%nUpstream Loss Rate: %.2f%%</string>
-<string name="in_ear_monitoring_failed">Vui lòng sử dụng tai nghe có dây</string>
+    <string name="rtc_stats_format">Tốc độ tải: %.2f kbps%nDownstream Loss Rate: %.2f%% %nUpstream Bitrate: %.2f kbps%nUpstream Loss Rate: %.2f%%</string>
+    <string name="in_ear_monitoring_failed">Vui lòng sử dụng tai nghe có dây</string>
 
-<string name="end_live_streaming_title_owner">Kết thúc buổi phát trực tiếp</string>
-<string name="end_live_streaming_message_owner">Bạn có muốn kết thúc buổi phát trực tiếp ?</string>
+    <string name="end_live_streaming_title_owner">Kết thúc buổi phát trực tiếp</string>
+    <string name="end_live_streaming_message_owner">Bạn có muốn kết thúc buổi phát trực tiếp ?</string>
 
-<string name="finish_broadcast_title_audience">Rời khỏi phòng</string>
-<string name="finish_broadcast_message_audience">Bạn có muốn rồi khỏi phòng?</string>
+    <string name="finish_broadcast_title_audience">Rời khỏi phòng</string>
+    <string name="finish_broadcast_message_audience">Bạn có muốn rồi khỏi phòng?</string>
 
-<string name="dialog_multi_host_open_seat_title">Vào lại</string>
-<string name="dialog_multi_host_open_seat_message">Bạn có muốn mở lại chỗ ngồi này không?</string>
+    <string name="dialog_multi_host_open_seat_title">Vào lại</string>
+    <string name="dialog_multi_host_open_seat_message">Bạn có muốn mở lại chỗ ngồi này không?</string>
 
-<string name="dialog_multi_host_block_seat_title">Chặn</string>
-<string name="dialog_multi_host_block_seat_message">Chặn chỗ ngồi. Nếu nó được sử dụng, \ n người dùng sẽ bị buộc phải rời đi.</string>
+    <string name="dialog_multi_host_block_seat_title">Chặn</string>
+    <string name="dialog_multi_host_block_seat_message">Chặn chỗ ngồi. Nếu nó được sử dụng, \ n người dùng sẽ bị buộc phải rời đi.</string>
 
-<string name="dialog_multi_host_mute_title">Tắt Tiếng</string>
-<string name="dialog_multi_host_mute_message">Cấm "%s" của người nói？</string>
+    <string name="dialog_multi_host_mute_title">Tắt Tiếng</string>
+    <string name="dialog_multi_host_mute_message">Cấm "%s" của người nói？</string>
 
-<string name="dialog_multi_host_unmute_title">Bật tiếng</string>
-<string name="dialog_multi_host_unmute_message">Cho phép "% s" nói？</string>
+    <string name="dialog_multi_host_unmute_title">Bật tiếng</string>
+    <string name="dialog_multi_host_unmute_message">Cho phép "% s" nói？</string>
 
     <!-- Network status detection -->
-<string name="network_unavailable">Mạng không khả dụng, vui lòng thử lại sau</string>
-<string name="network_switch_to_wifi">Bạn đang sử dụng mạng WIFI</string>
-<string name="network_switch_to_mobile">Bạn đang sử dụng mạng di động, bạn có thể trả phí sử dụng dữ liệu di động nếu tiếp tục.</string>
+    <string name="network_unavailable">Mạng không khả dụng, vui lòng thử lại sau</string>
+    <string name="network_switch_to_wifi">Bạn đang sử dụng mạng WIFI</string>
+    <string name="network_switch_to_mobile">Bạn đang sử dụng mạng di động, bạn có thể trả phí sử dụng dữ liệu di động nếu tiếp tục.</string>
     <!-- Live Prepare Activity -->
-<string name="live_prepare_hint">Tên Kênh</string>
-<string name="go_live_text">Bắt đầu phát trực tiếp</string>
-<string name="live_prepare_name_too_long_toast_format">Tên phòng không được dài hơn %d ký tự</string>
-<string name="live_prepare_no_room_name">Vui lòng nhập tên phòng của bạn</string>
-<string name="no_fu_auth_notice">Không tìm thấy xác thực FaceUnity</string>
+    <string name="live_prepare_hint">Tên Kênh</string>
+    <string name="go_live_text">Bắt đầu phát trực tiếp</string>
+    <string name="live_prepare_name_too_long_toast_format">Tên phòng không được dài hơn %d ký tự</string>
+    <string name="live_prepare_no_room_name">Vui lòng nhập tên phòng của bạn</string>
+    <string name="no_fu_auth_notice">Không tìm thấy xác thực FaceUnity</string>
 
     <!-- Policies -->
-<string name="live_prepare_room_restriction">Đây là một sản phẩm thử nghiệm. Vui lòng hạn chế sử dụng nó cho mục đích thương mại. Thời lượng tối đa mỗi phiên là 10 phút và số lượng người tham gia tối đa trên mỗi kênh là 10. </string>
+    <string name="live_prepare_room_restriction">Đây là một sản phẩm thử nghiệm. Vui lòng hạn chế sử dụng nó cho mục đích thương mại. Thời lượng tối đa mỗi phiên là 10 phút và số lượng người tham gia tối đa trên mỗi kênh là 10. </string>
 
-<string name="official_website">www.agora.io</string>
+    <string name="official_website">www.agora.io</string>
 
     <!-- Virtual Host -->
-<string name="live_virtual_image_select_title">Chọn ảnh</string>
-<string name="live_virtual_image_select_confirm">Xác nhận</string>
-<string name="live_virtual_image_invite">Mời</string>
-<string name="live_virtual_image_stop_invite">Rời khỏi</string>
-<string name="live_virtual_image_stop_invite_message">Bạn có muốn rời khỏi cuộc trò chuyện không?</string>
+    <string name="live_virtual_image_select_title">Chọn ảnh</string>
+    <string name="live_virtual_image_select_confirm">Xác nhận</string>
+    <string name="live_virtual_image_invite">Mời</string>
+    <string name="live_virtual_image_stop_invite">Rời khỏi</string>
+    <string name="live_virtual_image_stop_invite_message">Bạn có muốn rời khỏi cuộc trò chuyện không?</string>
 
-<string name="live_pk_host_remaining_time_hint">Rời khỏi PK:</string>
+    <string name="live_pk_host_remaining_time_hint">Rời khỏi PK:</string>
 
-<string-array name="gift_names">
-<item>Chuông</item>
-<item>Cây Kem</item>
-<item>Chai rượu</item>
-<item>Bánh kem</item>
-<item>Nhẫn</item>
-<item>Đồng hồ</item>
-<item>Kim cương</item>
-<item>Tên lửat</item>
-</string-array>
+    <string-array name="gift_names">
+        <item>Chuông</item>
+        <item>Cây Kem</item>
+        <item>Chai rượu</item>
+        <item>Bánh kem</item>
+        <item>Nhẫn</item>
+        <item>Đồng hồ</item>
+        <item>Kim cương</item>
+        <item>Tên lửat</item>
+    </string-array>
 
-<string-array name="live_room_action_sheet_tool_names">
-<item>Dữ liệu</item>
-<item>Người nói</item>
-<item>Tai Nghe</item>
-<item>Cài đặt</item>
-<item>Thanh cuộn</item>
-<item>Máy ảnh</item>
-</string-array>
+    <string-array name="live_room_action_sheet_tool_names">
+        <item>Dữ liệu</item>
+        <item>Người nói</item>
+        <item>Tai Nghe</item>
+        <item>Cài đặt</item>
+        <item>Thanh cuộn</item>
+        <item>Máy ảnh</item>
+    </string-array>
 
-<string name="user_terms_1">
+    <string name="user_terms_1">
 Agora Privacy And Terms of Service\n
 Agora Privacy Policy\n
 Introduction\n
@@ -415,7 +415,7 @@ This Policy applies only to the processing of your Personal Information by Agora
 \n6. Children’s Privacy\n
 Our Service is not directed to children under the age of 16, and we do not knowingly collect Personal Information from children under the age of 16 without obtaining parental consent. If you are under 16 years of age, then please do not use or access the Service at any time or in any manner. If we learn that Personal Information has been collected on the Service from persons under 16 years of age and without verifiable parental consent, then we will take the appropriate steps to delete this information. If you are a parent or guardian and discover that your child under 16 years of age has obtained an account on the Service, then you may alert us at privacy@agora.io and request that we delete that child’s Personal Information from our systems.\n
     </string>
-<string name="user_terms_3">
+    <string name="user_terms_3">
         7. Data Security\n
 We use certain physical, managerial, and technical safeguards that are designed to appropriately protect Personal Information against accidental or unlawful destruction, accidental loss, unauthorized alteration, unauthorized disclosure or access, misuse, and any other unlawful form of processing of the Personal Information in our possession. WE CANNOT, HOWEVER, ENSURE OR WARRANT THE SECURITY OF ANY INFORMATION YOU TRANSMIT TO US OR STORE ON THE SERVICE, AND YOU DO SO AT YOUR OWN RISK. WE ALSO CANNOT GUARANTEE THAT SUCH INFORMATION MAY NOT BE ACCESSED, DISCLOSED, ALTERED, OR DESTROYED BY BREACH OF ANY OF OUR PHYSICAL, TECHNICAL, OR MANAGERIAL SAFEGUARDS. The foregoing is subject to requirements under applicable law to ensure or warrant information security.\n
 If, under applicable law, we learn of a security breach, then we may attempt to notify you electronically so that you can take appropriate protective steps. We may post a notice through the Service if a security breach occurs. Depending on where you live, you may have a legal right to receive notice of a security breach in writing. To receive a free written notice of a security breach, you should notify us at privacy@agora.io.\n
@@ -496,7 +496,7 @@ BY PURCHASING A SUBSCRIPTION, YOU AGREE THAT YOUR SUBSCRIPTION WILL AUTOMATICALL
 YOU MAY CANCEL YOUR SUBSCRIPTION PLAN AT ANY TIME, IN WHICH CASE YOUR SUBSCRIPTION WILL EXPIRE AT THE END OF THAT SUBSCRIPTION PERIOD (AND UPON WHICH EXPIRATION YOUR SUBCRIPTION WILL NO LONGER BE RENEWED OR CHARGED). YOU MAY CANCEL YOUR SUBSCRIPTION PLAN by emailing support@agora.io  . You must cancel your Subscription Plan at least 24 hours before it renews in order to avoid billing of the next periodic Subscription Fee to your account.\n
 
     </string>
-<string name="user_terms_4">
+    <string name="user_terms_4">
         11.	 Rewards and Promotions\n
 Agora may include an opportunity for you to earn (including by completing actions or activities), reward points through various programs. Any rewards points will be governed by the terms of that program. In addition, Agora, at its sole discretion, may make promotional offers with different features to any of Agora’s users. These promotional offers, unless made to you, will not apply to your offer or these Terms.\n
 	12.	 ARCHIVING AND STORAGE OF RECORDED COMMUNICATIONS\n
@@ -552,7 +552,7 @@ You agree to indemnify, defend, and hold Agora and its affiliates, officers, dir
 The foregoing indemnity provision shall be in addition to and not in lieu of any other indemnification obligations set forth in these Terms.\n
 
     </string>
-<string name="privacy_policy">
+    <string name="privacy_policy">
         24.	 Dispute Resolution and Arbitration\n
 24.1.  Generally. In the interest of resolving disputes between you and Agora in the most expedient and cost-effective manner, and except as described in Section 24.2, you and Agora agree that every dispute arising in connection with these Terms will be resolved by binding arbitration. Arbitration is less formal than a lawsuit in court.\n
 Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for more limited discovery than in court, and can be subject to very limited review by courts. Arbitrators can award the same damages and relief that a court can award. This agreement to arbitrate disputes includes all claims arising out of or relating to any aspect of these Terms, whether based in contract, tort, statute, fraud, misrepresentation, or any other legal theory, and regardless of whether a claim arises during or after the termination of these Terms. YOU UNDERSTAND AND AGREE THAT, BY ENTERING INTO THESE TERMS, YOU AND AGORA ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN A CLASS ACTION.\n
@@ -577,77 +577,77 @@ Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for 
     </string>
 
     <!-- privacy -->
-<string name="setting_title_user_agreement">Quyền riêng tư và Điều khoản Dịch vụ của Agora</string>
-<string name="got_it">Đã hiểu</string>
-<string name="decline">Từ chối</string>
-<string name="accept">Đồng ý</string>
+    <string name="setting_title_user_agreement">Quyền riêng tư và Điều khoản Dịch vụ của Agora</string>
+    <string name="got_it">Đã hiểu</string>
+    <string name="decline">Từ chối</string>
+    <string name="accept">Đồng ý</string>
 
-<string name="agree_the_terms">Tôi đã đọc các điều khoản</string>
+    <string name="agree_the_terms">Tôi đã đọc các điều khoản</string>
 
-<string-array name="random_channel_names">
-<item>Reo hò</item>
-<item>Rung lắc</item>
-<item>Tuyệt phẩm</item>
-<item>Cặp đôi</item>
-<item>Nổi bật</item>
-<item>Ngạc Nhiên</item>
-<item>Hòa hợp</item>
-<item>Đậm chất thơ</item>
-<item>Cảnh giác</item>
-<item>Người cạnh tranh</item>
-<item>Khung cảnh</item>
-<item>Lang than</item>
-<item>Thu thập</item>
-<item>Mặt trăng</item>
-<item>Boho</item>
-<item>Đỉnh núi</item>
-</string-array>
+    <string-array name="random_channel_names">
+        <item>Reo hò</item>
+        <item>Rung lắc</item>
+        <item>Tuyệt phẩm</item>
+        <item>Cặp đôi</item>
+        <item>Nổi bật</item>
+        <item>Ngạc Nhiên</item>
+        <item>Hòa hợp</item>
+        <item>Đậm chất thơ</item>
+        <item>Cảnh giác</item>
+        <item>Người cạnh tranh</item>
+        <item>Khung cảnh</item>
+        <item>Lang than</item>
+        <item>Thu thập</item>
+        <item>Mặt trăng</item>
+        <item>Boho</item>
+        <item>Đỉnh núi</item>
+    </string-array>
 
-<string-array name="random_surnames">
-<item>Tân</item>
-<item>Đạt</item>
-<item>Dũng</item>
-<item>Nguyên</item>
-<item>Tú</item>
-<item>Tuấn Anh</item>
-<item>Tuyến</item>
-<item>Thằng khờ</item>
-</string-array>
+    <string-array name="random_surnames">
+        <item>Tân</item>
+        <item>Đạt</item>
+        <item>Dũng</item>
+        <item>Nguyên</item>
+        <item>Tú</item>
+        <item>Tuấn Anh</item>
+        <item>Tuyến</item>
+        <item>Thằng khờ</item>
+    </string-array>
 
-<string-array name="random_names">
-    <item>Alexander</item>
-    <item>Halley</item>
-    <item>Rickey</item>
-    <item>Xavior</item>
-    <item>Yolanda</item>
-    <item>Corynn</item>
-    <item>Daniel</item>
-    <item>Kelly</item>
-    <item>Lauren</item>
-</string-array>
+    <string-array name="random_names">
+        <item>Alexander</item>
+        <item>Halley</item>
+        <item>Rickey</item>
+        <item>Xavior</item>
+        <item>Yolanda</item>
+        <item>Corynn</item>
+        <item>Daniel</item>
+        <item>Kelly</item>
+        <item>Lauren</item>
+    </string-array>
 
-<string name="live_room_tool_action_sheet_title_setting">Cài đặt</string>
-<string name="live_room_tool_action_sheet_title_data">dữ liệu</string>
-<string name="live_room_tool_action_sheet_title_beauty">Làm đẹp</string>
-<string name="live_room_tool_action_sheet_title_music">Âm nhạc</string>
-<string name="live_room_tool_action_sheet_title_rotate">Thanh cuộn</string>
-<string name="live_room_tool_action_sheet_title_camera">Máy ảnh</string>
-<string name="live_room_tool_action_sheet_title_speaker">Người nói</string>
-<string name="live_room_tool_action_sheet_title_inear">Tai nghe</string>
-<string name="live_room_tool_action_sheet_title_apply">Áp dụng</string>
-<string name="button_text_done">Xong</string>
+    <string name="live_room_tool_action_sheet_title_setting">Cài đặt</string>
+    <string name="live_room_tool_action_sheet_title_data">dữ liệu</string>
+    <string name="live_room_tool_action_sheet_title_beauty">Làm đẹp</string>
+    <string name="live_room_tool_action_sheet_title_music">Âm nhạc</string>
+    <string name="live_room_tool_action_sheet_title_rotate">Thanh cuộn</string>
+    <string name="live_room_tool_action_sheet_title_camera">Máy ảnh</string>
+    <string name="live_room_tool_action_sheet_title_speaker">Người nói</string>
+    <string name="live_room_tool_action_sheet_title_inear">Tai nghe</string>
+    <string name="live_room_tool_action_sheet_title_apply">Áp dụng</string>
+    <string name="button_text_done">Xong</string>
 
-<string name="modify_user_name_too_long">Tên người dùng không được dài hơn 15 chữ cái</string>
-<string name="modify_user_name_empty">Tên ngươi dùng không được để trống</string>
-<string name="modify_user_name_error">Sửa đổi tên người dùng không thành công</string>
+    <string name="modify_user_name_too_long">Tên người dùng không được dài hơn 15 chữ cái</string>
+    <string name="modify_user_name_empty">Tên ngươi dùng không được để trống</string>
+    <string name="modify_user_name_error">Sửa đổi tên người dùng không thành công</string>
 
-<string name="login_email_hint">Email</string>
+    <string name="login_email_hint">Email</string>
 
-<string name="login_password_hint">Mật khẩu</string>
+    <string name="login_password_hint">Mật khẩu</string>
 
     <!-- Toasts -->
-<string name="apply_seat_success">Áp dụng thành công</string>
-<string name="invite_success">Mời thành công</string>
+    <string name="apply_seat_success">Áp dụng thành công</string>
+    <string name="invite_success">Mời thành công</string>
 
     <string name="dialog_multi_host_leave_title">Rời khỏi</string>
     <string name="dialog_multi_host_leave_message_owner">Bạn có muốn "%s" rời đi？</string>

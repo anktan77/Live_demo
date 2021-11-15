@@ -1,7 +1,9 @@
 package com.example.live_demo.ui.components;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -16,6 +18,9 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import com.example.live_demo.R;
+import com.example.live_demo.vlive.Config;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -115,8 +120,26 @@ public class LiveHostNameLayout extends RelativeLayout {
     }
 
     // set drawble từ singlehostactivity or multi activity
-    public void setIcon(Drawable drawable) {
+    public void setIconNotUrl(Drawable drawable) {
         mIconImageView.setImageDrawable(drawable);
+   }
+
+    public void setIconUrl(String imageUrl) {
+        Picasso.with(getContext()).load(imageUrl).into(mIconImageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                Bitmap imageBitmap = ((BitmapDrawable) mIconImageView.getDrawable()).getBitmap();
+                RoundedBitmapDrawable drawable =
+                        RoundedBitmapDrawableFactory.create(getResources(), imageBitmap);
+                drawable.setCircular(true);
+                mIconImageView.setImageDrawable(drawable);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 
     /**

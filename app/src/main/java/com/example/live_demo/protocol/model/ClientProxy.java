@@ -55,6 +55,17 @@ public class ClientProxy {
         return sInstance;
     }
 
+
+
+    public void LoginASP(int request, LoginASPRequest  params){
+        switch (request){
+            case Request.LOGIN_ASP:
+                LoginASPRequest loginASPRequest = (LoginASPRequest) params;
+                mClient.requestLoginASP(loginASPRequest.IdPerson,loginASPRequest.Email,
+                        loginASPRequest.Name,loginASPRequest.ImageView,loginASPRequest.Phone,loginASPRequest.Coins);
+        }
+    }
+
     public long sendRequest(int request, Object params) {
         switch (request) {
             case Request.APP_VERSION:
@@ -67,9 +78,7 @@ public class ClientProxy {
             case Request.MUSIC_LIST:
                 mClient.requestMusicList(mReqId);
                 break;
-            case Request.LOGIN_ASP:
-                LoginASPRequest loginASPRequest = (LoginASPRequest) params;
-                mClient.requestLoginASP(loginASPRequest.Email,loginASPRequest.Password);
+
             case Request.OSS:
                 OssPolicyRequest ossRequest = (OssPolicyRequest) params;
                 mClient.requestOssPolicy(mReqId, ossRequest.token, ossRequest.type);

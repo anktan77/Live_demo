@@ -7,12 +7,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.elvishew.xlog.XLog;
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.request.UserRequest;
 import com.example.live_demo.protocol.model.response.AppVersionResponse;
@@ -26,6 +28,8 @@ import com.example.live_demo.ui.components.PrivacyTermsDialog;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.utils.RandomUtil;
 import com.example.live_demo.vlive.Config;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,6 +48,9 @@ public class MainActivity extends BaseActivity {
     private NavController mNavController;
     private int mAppIdTryCount;
     private PrivacyTermsDialog termsDialog;
+    String personName;
+    String ImageView;
+    String personEmail;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +78,30 @@ public class MainActivity extends BaseActivity {
                 }
             });
             termsDialog.show();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            if (personPhoto == null){
+                ImageView = "";
+            }
+            else {
+                ImageView = personPhoto.toString();
+            }
+
+
+            loginASP(Request.LOGIN_ASP,new LoginASPRequest(personId,personEmail,personName,ImageView,"",0));
         }
     }
 
@@ -165,10 +196,12 @@ public class MainActivity extends BaseActivity {
         // khai báo
         Config.UserProfile profile = config().getUserProfile();
         // lấy dữ liệu trong share preferences set vào profile
-        initUserFromStorage(profile);
+        // lúc đầu là dầy
+//        initUserFromStorage(profile);
         // nếu profile = null
         if (!profile.isValid()) {
             createUser();
+            initUserFromStorage(profile);
         } else {
             loginToServer();
         }
@@ -184,14 +217,18 @@ public class MainActivity extends BaseActivity {
 
     private void createUser() {
         //random username trong class randomUtil
-        String userName = RandomUtil.randomUserName(this);
-
+//        String userName = RandomUtil.randomUserName(this);
+        String userName = personName;
+        String email = personEmail;
+        String imageUrl = ImageView;
         //truyền vào config().getUserProfile()
         config().getUserProfile().setUserName(userName);
-
+        config().getUserProfile().setEmail(email);
+        config().getUserProfile().setImageUrl(imageUrl);
         //lưu tên username vào lưu trữ tạm thời trên máy với mã lưu KEY_USER_NAME = "key-user-name"
         preferences().edit().putString(Global.Constants.KEY_USER_NAME, userName).apply();
-
+        preferences().edit().putString(Global.Constants.KEY_EMAIL, email).apply();
+        preferences().edit().putString(Global.Constants.KEY_IMAGE_URL, imageUrl).apply();
         // request api để nhận id token mới,
         // CREATE_USER = 5
         sendRequest(Request.CREATE_USER, new UserRequest(userName));

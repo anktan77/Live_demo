@@ -1,7 +1,9 @@
 package com.example.live_demo.ui.main.fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -22,9 +24,12 @@ import com.example.live_demo.R;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.live.AboutActivity;
 import com.example.live_demo.ui.live.ModifyUserNameActivity;
+import com.example.live_demo.ui.live.ProfileUserActivity;
 import com.example.live_demo.utils.Global;
 import com.example.live_demo.utils.UserUtil;
 import com.example.live_demo.vlive.Config;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 
 public class MeFragment extends AbstractFragment implements View.OnClickListener {
@@ -34,6 +39,7 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
     private View mLayout;
     private AppCompatTextView mNameText;
     private AppCompatTextView mProfileTitleNameText;
+    private AppCompatImageView appCompatImageView;
 
     @Nullable
     @Override
@@ -41,6 +47,7 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
         Config.UserProfile profile = config().getUserProfile();
         mLayout = inflater.inflate(R.layout.fragment_me, container, false);
         setUserIcon(mLayout.findViewById(R.id.user_profile_icon));
+        appCompatImageView = mLayout.findViewById(R.id.user_profile_icon);
 
         mNameText = mLayout.findViewById(R.id.edit_profile_nickname);
         mNameText.setText(profile.getUserName());
@@ -68,20 +75,39 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
     }
 
     private void setUserIcon(AppCompatImageView imageView) {
-        Config.UserProfile profile = getContainer().config().getUserProfile();
-        Drawable saved = profile.getProfileIcon();
-        RoundedBitmapDrawable drawable =
-                saved instanceof RoundedBitmapDrawable ? (RoundedBitmapDrawable) saved : null;
+        Config.UserProfile profile = config().getUserProfile();
+        if (profile.getImageUrl()==""){
+            Drawable saved = profile.getProfileIcon();
+            RoundedBitmapDrawable drawable =
+                    saved instanceof RoundedBitmapDrawable ? (RoundedBitmapDrawable) saved : null;
 
-        if (drawable == null) {
-            drawable = RoundedBitmapDrawableFactory.create(getResources(),
-                    BitmapFactory.decodeResource(getResources(),
-                            UserUtil.getUserProfileIcon(profile.getUserId())));
-            drawable.setCircular(true);
-            profile.setProfileIcon(drawable);
+            if (drawable == null) {
+                drawable = RoundedBitmapDrawableFactory.create(getResources(),
+                        BitmapFactory.decodeResource(getResources(),
+                                UserUtil.getUserProfileIcon(profile.getUserId())));
+                drawable.setCircular(true);
+                profile.setProfileIcon(drawable);
+            }
+
+            imageView.setImageDrawable(drawable);
         }
+        else {
+            Picasso.with(getContext()).load(profile.getImageUrl()).into(imageView, new Callback() {
+                @Override
+                public void onSuccess() {
+                    Bitmap imageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                    RoundedBitmapDrawable drawable =
+                            RoundedBitmapDrawableFactory.create(getResources(), imageBitmap);
+                    drawable.setCircular(true);
+                    imageView.setImageDrawable(drawable);
+                }
 
-        imageView.setImageDrawable(drawable);
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
     }
 
     @Override
@@ -91,11 +117,17 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
                 goEditUserNameActivity();
                 break;
             case R.id.user_profile_icon_setting_layout:
+                goProfileUserActivity();
                 break;
             case R.id.user_profile_about_layout:
                 gotoAboutActivity();
                 break;
         }
+    }
+
+    private void goProfileUserActivity() {
+        Intent intent = new Intent(getContext(), ProfileUserActivity.class);
+        startActivity(intent);
     }
 
     private void goEditUserNameActivity() {

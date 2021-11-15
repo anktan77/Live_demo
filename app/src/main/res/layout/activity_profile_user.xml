@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.live.ProfileUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/activity_profile_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/about_activity_title_height">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/profile_title"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_large" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/profile_user_activity_close"
+                android:layout_width="@dimen/button_height"
+                android:layout_height="@dimen/button_height"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:src="@drawable/icon_back_black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_user_sign_out_btn"
+                android:layout_width="68dp"
+                android:layout_height="@dimen/modify_user_name_done_btn_height"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:background="@drawable/modify_user_name_done_btn_color"
+                android:gravity="center"
+                android:text="Đăng xuất"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_divider_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@color/gray_lightest" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_height"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_user_email_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical"
+                android:text="Email"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_divider_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@color/gray_lightest" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_height"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical"
+                android:text="Số điện thoại"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_divider_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@color/gray_lightest" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_coin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_height"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical"
+                android:text="Coins"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_user_add_coin_btn"
+                android:layout_width="@dimen/modify_user_name_done_btn_width"
+                android:layout_height="@dimen/modify_user_name_done_btn_height"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:background="@drawable/modify_user_name_done_btn_color"
+                android:gravity="center"
+                android:text="Nạp coin"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/profile_item_divider_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@color/gray_lightest" />
+    </LinearLayout>
+</RelativeLayout>

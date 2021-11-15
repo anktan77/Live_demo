@@ -43,6 +43,7 @@ public class Global {
 
         public static final String KEY_PROFILE_UID = "key-profile-uid";
         public static final String KEY_USER_NAME = "key-user-name";
+        public static final String KEY_EMAIL = "key-email";
         public static final String KEY_IMAGE_URL = "key-image-url";
         public static final String KEY_TOKEN = "key-token";
 

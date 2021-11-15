@@ -138,7 +138,6 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
         if (response.code == Response.SUCCESS) {
             ownerId = response.data.room.owner.userId;
             ownerRtcUid = response.data.room.owner.uid;
-
             // Xác định xem tôi có phải là chủ sở hữu của máy chủ lưu trữ ở đây không vì
             // Tôi có thể rời khỏi phòng đột xuất và đến một lần nữa.
             String myId = config().getUserProfile().getUserId();
@@ -160,8 +159,14 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
                 }
 
                 mNamePad.setName(response.data.room.owner.userName);
-                mNamePad.setIcon(UserUtil.getUserRoundIcon(getResources(),
-                        response.data.room.owner.userId));
+
+                if (config().getUserProfile().getImageUrl() == ""){
+                    mNamePad.setIconNotUrl(UserUtil.getUserRoundIcon(getResources(),
+                            response.data.room.owner.userId));
+                }
+                else {
+                    mNamePad.setIconUrl(config().getUserProfile().getImageUrl());
+                }
             });
         }
     }

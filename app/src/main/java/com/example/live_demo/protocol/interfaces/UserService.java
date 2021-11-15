@@ -4,6 +4,7 @@ import com.example.live_demo.protocol.model.body.CreateUserBody;
 import com.example.live_demo.protocol.model.body.LoginASPBody;
 import com.example.live_demo.protocol.model.body.LoginBody;
 import com.example.live_demo.protocol.model.body.UserRequestBody;
+import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.response.CreateUserResponse;
 import com.example.live_demo.protocol.model.response.EditUserResponse;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
@@ -28,6 +29,6 @@ public interface UserService {
     @POST("ent/v1/user/login")
     Call<LoginResponse> requestLogin(@Header("reqId") long reqId, @Header("reqType") int reqType, @Body LoginBody body);
 
-    @POST("api/Account/Login/")
-    Call<LoginASPResponse> requestLoginASP(@Body LoginASPBody body);
+
+
 }

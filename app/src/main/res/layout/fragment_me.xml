@@ -11,32 +11,36 @@
             android:id="@+id/profile_title_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="@dimen/profile_portrait_background_size"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="@dimen/profile_portrait_background_size"
                     android:layout_height="@dimen/profile_portrait_background_size"
                     android:background="@drawable/white_circle">
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/user_profile_icon"
                         android:layout_width="@dimen/profile_portrait_size"
                         android:layout_height="@dimen/profile_portrait_size"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
-                        android:src="@drawable/default_portrait_white"/>
+                        android:src="@drawable/default_portrait_white" />
                 </RelativeLayout>
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_profile_nickname"
                     android:layout_width="@dimen/profile_portrait_background_size"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/profile_user_nickname_margin"
-                    android:textAlignment="gravity"
                     android:gravity="center_horizontal"
-                    android:textSize="@dimen/text_size_normal"
-                    android:textColor="@android:color/white"/>
+                    android:textAlignment="gravity"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_normal" />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
