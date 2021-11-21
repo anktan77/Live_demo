@@ -114,6 +114,7 @@
             android:paddingEnd="@dimen/activity_horizontal_margin">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/conis_user"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"

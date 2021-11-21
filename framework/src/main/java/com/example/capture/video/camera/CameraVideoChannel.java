@@ -44,28 +44,12 @@ public class CameraVideoChannel extends VideoChannel implements VideoCapture.OnV
         mListener = listener;
     }
 
-    /**
-     * Set the current camera facing
-     * @param facing must be one of Constant.CAMERA_FACING_FRONT
-     *               or Constant.CAMERA_FACING_BACK
-     * Will not take effect until next startCapture or
-     * switchCamera succeeds.
-     */
+
     public void setFacing(int facing) {
         mFacing = facing;
     }
 
-    /**
-     * Set the ideal capture image size in pixels.
-     * Note the size is only a reference to find the
-     * most closest size that the camera hardware supports.
-     * The size is usually horizontal, that is, the width
-     * is larger than the height, or the picture will be
-     * cropped more than desired.
-     * The default picture size is 1920 * 1080
-     * Will not take effect until next startCapture or
-     * switchCamera succeeds.
-     */
+
     public void setPictureSize(int width, int height) {
         mWidth = width;
         mHeight = height;
@@ -106,6 +90,7 @@ public class CameraVideoChannel extends VideoChannel implements VideoCapture.OnV
         }
     }
 
+    // mFacing giá trị nhận biết camera trước hay sau
     private void switchCameraFacing() {
         if (mFacing == Constant.CAMERA_FACING_FRONT) {
             mFacing = Constant.CAMERA_FACING_BACK;

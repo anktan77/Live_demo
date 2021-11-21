@@ -28,11 +28,11 @@ public abstract class VideoProducer implements IVideoProducer {
 
         pChannelHandler.post(() -> {
             try {
-                // The capture utilizes the environment OpenGL
-                // context for preview texture, so the capture
-                // thread and video channel thread use their
-                // shared OpenGL context.
-                // Thus updateTexImage() is valid here.
+                // Chụp sử dụng môi trường OpenGL
+                // ngữ cảnh để xem trước kết cấu, vì vậy việc chụp
+                // luồng và luồng video sử dụng
+                // ngữ cảnh OpenGL được chia sẻ.
+                // Do đó updateTexImage () là hợp lệ ở đây.
                 frame.surfaceTexture.updateTexImage();
                 if (frame.textureTransform == null) frame.textureTransform = new float[16];
                 frame.surfaceTexture.getTransformMatrix(frame.textureTransform);

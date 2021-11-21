@@ -51,13 +51,15 @@ public class GiftActionSheet extends AbstractActionSheet implements View.OnClick
         mRecycler = findViewById(R.id.live_room_action_sheet_gift_recycler);
         mRecycler.setLayoutManager(new GridLayoutManager(getContext(), SPAN_COUNT));
         mRecycler.setAdapter(new GiftAdapter());
+        // tên quà
         mGiftNames = getResources().getStringArray(R.array.gift_names);
+        // %coins
         mValueFormat = getResources().getString(R.string.live_room_gift_action_sheet_value_format);
 
         AppCompatTextView sendBtn = findViewById(R.id.live_room_action_sheet_gift_send_btn);
         sendBtn.setOnClickListener(this);
 
-        // The first gift is selected by default
+        // Món quà đầu tiên được chọn theo mặc định
         if (mRecycler.getAdapter().getItemCount() > 0) {
             mSelected = 0;
         }
@@ -65,9 +67,13 @@ public class GiftActionSheet extends AbstractActionSheet implements View.OnClick
 
     @Override
     public void onClick(View view) {
+        // nó sẽ chạy onActionSheetGiftSend live room activity
         if (view.getId() == R.id.live_room_action_sheet_gift_send_btn) {
-            if (mListener != null && mSelected != -1) mListener.onActionSheetGiftSend(
-                    application().config().getGiftList().get(mSelected).getGiftName(), mSelected, 0);
+            if (mListener != null && mSelected != -1){
+                mListener.onActionSheetGiftSend(
+                        application().config().getGiftList().get(mSelected).getGiftName(), mSelected,
+                        application().config().getGiftList().get(mSelected).getPoint());
+            }
         }
     }
 

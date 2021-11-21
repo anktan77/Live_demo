@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.interfaces.LoginService;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.main.MainActivity;
 import com.example.live_demo.vlive.Config;
@@ -21,15 +22,24 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class ProfileUserActivity extends BaseActivity implements View.OnClickListener {
 
-    private AppCompatTextView mSignOutBtn, mProfileEmail;
+    private AppCompatTextView mSignOutBtn, mProfileEmail, mProfileCoins;
     private AppCompatImageView mCloseProfile;
     GoogleSignInClient mGoogleSignInClient;
+
+    private static Retrofit retrofit;
+    private static final String Base_Url = "http://10.0.2.2:8097";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideStatusBar(true);
+        getUser();
         setContentView(R.layout.activity_profile_user);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -40,6 +50,33 @@ public class ProfileUserActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+    public static Retrofit getRetrofit(){
+
+        if (retrofit == null){
+            retrofit = new Retrofit.Builder().baseUrl(Base_Url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+
+    private void getUser() {
+        Config.UserProfile profile = config().getUserProfile();
+        LoginService loginService =getRetrofit().create(LoginService.class);
+        loginService.requestUser(profile.getEmail()).enqueue(new retrofit2.Callback<LoginASPResponse>() {
+            @Override
+            public void onResponse(Call<LoginASPResponse> call, Response<LoginASPResponse> response) {
+                LoginASPResponse loginASPResponse = response.body();
+                mProfileCoins.setText(loginASPResponse.Coins + " Coins");
+            }
+
+            @Override
+            public void onFailure(Call<LoginASPResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void Init() {
         Config.UserProfile profile = config().getUserProfile();
         mSignOutBtn = findViewById(R.id.profile_user_sign_out_btn);
@@ -47,6 +84,7 @@ public class ProfileUserActivity extends BaseActivity implements View.OnClickLis
         mCloseProfile = findViewById(R.id.profile_user_activity_close);
         mCloseProfile.setOnClickListener(this);
         mProfileEmail = (AppCompatTextView) findViewById(R.id.profile_user_email_text);
+        mProfileCoins = (AppCompatTextView) findViewById(R.id.conis_user);
         mProfileEmail.setText(profile.getEmail());
     }
 

@@ -43,11 +43,11 @@ import io.agora.rtm.RtmChannelAttribute;
 import io.agora.rtm.RtmChannelMember;
 
 
-/**
- * Common capabilities of a live room. Such as, camera capture，
- * , agora rtc, messaging, permission check, communication with
- * the back-end server, and so on.
- */
+/// **
+//        * Các công năng chung của phòng khách. Chẳng hạn như, chụp ảnh bằng máy ảnh ，
+//        *, agora rtc, nhắn tin, kiểm tra quyền, giao tiếp với
+//        * máy chủ back-end, v.v.
+//        * /
 public abstract class LiveBaseActivity extends BaseActivity
         implements RtcEventHandler, RtmMessageListener {
     protected static final String[] PERMISSIONS = {
@@ -184,8 +184,11 @@ public abstract class LiveBaseActivity extends BaseActivity
 
     protected void joinRtcChannel() {
         rtcEngine().setClientRole(myRtcRole);
+        // lấy camera 2
         rtcEngine().setVideoSource(new RtcVideoConsumer(VideoModule.instance()));
+        // cấu hình thông số camera
         setVideoConfiguration();
+        // publish, rtcChannelName lấy từ việc onEnterRoomResponse
         rtcEngine().joinChannel(config().getUserProfile().getRtcToken(),
                 rtcChannelName, null, (int) config().getUserProfile().getAgoraUid());
     }

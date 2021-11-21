@@ -24,7 +24,9 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import com.elvishew.xlog.XLog;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.interfaces.LoginService;
 import com.example.live_demo.protocol.model.ClientProxy;
+import com.example.live_demo.protocol.model.body.CommitGiftBody;
 import com.example.live_demo.protocol.model.model.UserProfile;
 import com.example.live_demo.protocol.model.request.CreateRoomRequest;
 import com.example.live_demo.protocol.model.request.Request;
@@ -33,6 +35,8 @@ import com.example.live_demo.protocol.model.request.SendGiftRequest;
 import com.example.live_demo.protocol.model.response.AudienceListResponse;
 import com.example.live_demo.protocol.model.response.CreateRoomResponse;
 import com.example.live_demo.protocol.model.response.EnterRoomResponse;
+import com.example.live_demo.protocol.model.response.LoginASPResponse;
+import com.example.live_demo.protocol.model.response.PostResponse;
 import com.example.live_demo.protocol.model.response.Response;
 import com.example.live_demo.ui.actionsheets.BackgroundMusicActionSheet;
 import com.example.live_demo.ui.actionsheets.BeautySettingActionSheet;
@@ -55,10 +59,16 @@ import com.example.live_demo.vlive.shark.rtm.model.NotificationMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtm.ErrorInfo;
 import io.agora.rtm.ResultCallback;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public abstract class LiveRoomActivity extends LiveBaseActivity implements
@@ -84,6 +94,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
     protected LiveRoomUserLayout participants;
     protected LiveRoomMessageList messageList;
     protected LiveBottomButtonLayout bottomButtons;
+    // layout nhập mess
     protected LiveMessageEditLayout messageEditLayout;
     protected AppCompatEditText messageEditText;
     protected RtcStatsView rtcStatsView;
@@ -121,9 +132,13 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // khi click vào edittext
+        // làm cho thanh nhập editext ở trên bàn phím
         getWindow().getDecorView().getViewTreeObserver()
                 .addOnGlobalLayoutListener(this::detectKeyboardLayout);
 
+        // sử dụng để tải bàn phím
+        // quản lý bàn phím, ẩn bàn phím
         inputMethodManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -143,6 +158,8 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         }
     }
 
+
+    // lấy chìu cao của keyboard
     private void detectKeyboardLayout() {
         Rect rect = new Rect();
         getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
@@ -153,12 +170,12 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
 
         int diff = mDecorViewRect.height() - rect.height();
 
-        // The global layout listener may be invoked several
-        // times when the activity is launched, we need to care
-        // about the value of detected input method height to
-        // filter out the cases that are not desirable.
+        // Trình nghe bố cục toàn cục có thể được gọi một số
+        // khi hoạt động được khởi chạy, chúng ta cần quan tâm
+        // về giá trị của chiều cao phương thức nhập được phát hiện thành
+        // lọc ra những trường hợp không mong muốn.
         if (diff == mInputMethodHeight) {
-            // The input method is still shown
+            // Phương thức nhập vẫn được hiển thị
             return;
         }
 
@@ -172,6 +189,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
     }
 
     protected void onInputMethodToggle(boolean shown, int height) {
+        // init edit layout
         RelativeLayout.LayoutParams params =
                 (RelativeLayout.LayoutParams) messageEditLayout.getLayoutParams();
         int change = shown ? height : -height;
@@ -180,6 +198,8 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
 
         if (shown) {
             messageEditText.requestFocus();
+            // nhập văn bản
+            // xử lý nhấn nút thực hiện gửi mess
             messageEditText.setOnEditorActionListener(this);
         } else {
             messageEditLayout.setVisibility(View.GONE);
@@ -192,7 +212,12 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         request.type = getChannelTypeByTabId();
         request.roomName = roomName;
         int imageId = getIntent().getIntExtra(Global.Constants.KEY_VIRTUAL_IMAGE, -1);
-        request.avatar = virtualImageIdToName(imageId);
+        if (config().getUserProfile().getImageUrl() == ""){
+            request.avatar = virtualImageIdToName(imageId);
+        }
+        else {
+            request.avatar = config().getUserProfile().getImageUrl();
+        }
         sendRequest(Request.CREATE_ROOM, request);
     }
 
@@ -220,6 +245,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         return -1;
     }
 
+    // tạo room  lấy id room
     @Override
     public void onCreateRoomResponse(CreateRoomResponse response) {
         roomId = response.data;
@@ -231,6 +257,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         sendRequest(Request.ENTER_ROOM, request);
     }
 
+    // vào room lấy rtc
     @Override
     public void onEnterRoomResponse(EnterRoomResponse response) {
         if (response.code == Response.SUCCESS) {
@@ -319,21 +346,25 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         if (bottomButtons != null) bottomButtons.setMusicPlaying(false);
     }
 
+    // gửi quà, intdex là mã gift
+    // gửi quà khác với gửi tin nhắn vì nó sẽ send trực tiếp đến server
+    // sau đó server trả về sdk rtm rồi xử lý
     @Override
     public void onActionSheetGiftSend(String name, int index, int value) {
+        // ẩn hộp thoại
         dismissActionSheetDialog();
         SendGiftRequest request = new SendGiftRequest(config().
                 getUserProfile().getToken(), roomId, index);
         sendRequest(Request.SEND_GIFT, request);
     }
 
-    /**
-     *
-     * @param monitor the ideal monitoring state to be checked
-     * @return true if the current audio route is wired or wire-less
-     * headset with microphone, the audio route can be enabled.
-     * Returns true if the state is allowed to be changed.
-     */
+//   / **
+//           *
+//           * @param giám sát trạng thái giám sát lý tưởng để được kiểm tra
+//      * @ trở lại true nếu tuyến âm thanh hiện tại là có dây hoặc không có dây
+//      * tai nghe với micrô, tuyến âm thanh có thể được kích hoạt.
+//      * Trả về true nếu trạng thái được phép thay đổi.
+//      * /
     @Override
     public boolean onActionSheetEarMonitoringClicked(boolean monitor) {
         if (monitor) {
@@ -420,21 +451,25 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         if (messageEditLayout != null) {
             messageEditLayout.setVisibility(View.VISIBLE);
             messageEditText.requestFocus();
+            // làm keyboard xuất hiện khi click vào editext
             inputMethodManager.showSoftInput(messageEditText, 0);
         }
     }
 
+    // xử lý nhấn nút thực hiện sẽ gửi mess
     @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
         if (actionId == EditorInfo.IME_ACTION_DONE) {
-            Editable editable = messageEditText.getText();
+            String editable = messageEditText.getText().toString();
             if (TextUtils.isEmpty(editable)) {
                 showShortToast(getResources().getString(R.string.live_send_empty_message));
             } else {
                 sendChatMessage(editable.toString());
+                // sau khi nhập xong mess trả về rỗng
                 messageEditText.setText("");
             }
 
+            // ẩn bàn phím
             inputMethodManager.hideSoftInputFromWindow(messageEditText.getWindowToken(), 0);
             return true;
         }
@@ -506,6 +541,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         // Called when clicking an online user's name, and want to see the detail
     }
 
+    // cái này quan trọng chạy đa luồng, nhận mess từ Rtm
     @Override
     public void onRtmChannelMessageReceived(String peerId, String nickname, String content) {
         runOnUiThread(() -> messageList.addMessage(LiveRoomMessageList.MSG_TYPE_CHAT, nickname, content));
@@ -529,22 +565,64 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         runOnUiThread(() -> participants.reset(rankList));
     }
 
+    int mgift = 1;
+    // tặng gift
     @Override
     public void onRtmGiftMessage(String fromUserId, String fromUserName, String toUserId, String toUserName, int giftId) {
         runOnUiThread(() -> {
+
             String from = TextUtils.isEmpty(fromUserName) ? fromUserId : fromUserName;
             String to = TextUtils.isEmpty(toUserName) ? toUserId : toUserName;
-            messageList.addMessage(LiveRoomMessageList.MSG_TYPE_GIFT, from, to, giftId);
+            commitGift(fromUserName, toUserName, giftId);
 
-            GiftAnimWindow window = new GiftAnimWindow(LiveRoomActivity.this, R.style.gift_anim_window);
-            window.setAnimResource(GiftUtil.getGiftAnimRes(giftId));
-            window.show();
+
+
         });
     }
 
+    private static Retrofit retrofit;
+    private static final String Base_Url = "http://10.0.2.2:8097";
+
+    public static Retrofit getRetrofit(){
+
+        if (retrofit == null){
+            retrofit = new Retrofit.Builder().baseUrl(Base_Url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+
+    private void commitGift(String fromUserName, String toUserName, int giftId) {
+        int coins =  application().config().getGiftList().get(giftId).getPoint();
+        LoginService loginService =getRetrofit().create(LoginService.class);
+        loginService.requestCommitGift(new CommitGiftBody(fromUserName,toUserName,coins)).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, retrofit2.Response<Integer> response) {
+                int code = response.body();
+                if (code == 0){
+                    Toast.makeText(LiveRoomActivity.this, "số dư không đủ", Toast.LENGTH_SHORT).show();
+                }
+                if (code == 1) {
+                    messageList.addMessage(LiveRoomMessageList.MSG_TYPE_GIFT, fromUserName, toUserName, giftId);
+                    GiftAnimWindow window = new GiftAnimWindow(LiveRoomActivity.this, R.style.gift_anim_window);
+                    window.setAnimResource(GiftUtil.getGiftAnimRes(giftId));
+                    window.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    // thông báo ra khỏi phòng hay vào phòng
     @Override
     public void onRtmChannelNotification(int total, List<NotificationMessage.NotificationItem> list) {
-        // User enter & leave notifications.
+        // thông báo vào phòng hay ra phòng
         runOnUiThread(() -> {
             // update room user count
             participants.reset(total);

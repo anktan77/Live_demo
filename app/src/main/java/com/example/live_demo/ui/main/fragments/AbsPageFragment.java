@@ -85,10 +85,10 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
                     stopRefreshTimer();
                 } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
-                        // The swipe layout is refreshing when
-                        // we want to refresh the whole page.
-                        // In this case, we'll let the refreshing
-                        // listener to handle all the work.
+                        // Bố cục vuốt được làm mới khi
+                        // chúng tôi muốn làm mới toàn bộ trang.
+                        // Trong trường hợp này, chúng tôi sẽ làm mới
+                        // người nghe để xử lý tất cả công việc.
                         return;
                     }
 
@@ -164,10 +164,10 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
         getContainer().proxy().removeProxyListener(this);
     }
 
-    /**
-     * Refresh the page from after a specific room.
-     * @param nextId null if refresh from the beginning of list
-     */
+//    / **
+//            * Làm mới trang từ sau một phòng cụ thể.
+//      * @param nextId null nếu làm mới từ đầu danh sách
+//      * /
     private void refreshPage(String nextId) {
         if (nextId == null) mAdapter.clear(false);
         refreshPage(nextId, REQ_ROOM_COUNT, onGetRoomListType(), null);

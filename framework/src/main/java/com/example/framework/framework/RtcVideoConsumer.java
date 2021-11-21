@@ -48,7 +48,7 @@ public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
 
     @Override
     public void connectChannel(int channelId) {
-        // Rtc transmission is an off-screen rendering procedure.
+        // lấy camera2
         VideoChannel channel = mVideoModule.connectConsumer(
                 this, channelId, IVideoConsumer.TYPE_OFF_SCREEN);
     }

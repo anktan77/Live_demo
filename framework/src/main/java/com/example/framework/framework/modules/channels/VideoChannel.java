@@ -66,7 +66,7 @@ public class VideoChannel extends HandlerThread {
         onChannelContextCreated();
     }
 
-    // The initialization phase for sub classes
+    // Giai đoạn khởi tạo cho các lớp con
     protected void onChannelContextCreated() {
 
     }
@@ -259,9 +259,9 @@ public class VideoChannel extends HandlerThread {
         }
 
         if (mRotateProcessor != null) {
-            // Rotate the image to the final state.
-            // Further rotation procedure will not be
-            // necessary for all consumers.
+            // Xoay hình ảnh về trạng thái cuối cùng.
+            // Thủ tục xoay vòng tiếp theo sẽ không
+            // cần thiết cho tất cả người dùng.
             frame = mRotateProcessor.process(frame, getChannelContext());
             makeDummySurfaceCurrent();
         }

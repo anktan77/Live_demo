@@ -79,8 +79,9 @@ public class LiveRoomMessageList extends RecyclerView {
                 LinearLayoutManager.VERTICAL, false);
         setLayoutManager(mLayoutManager);
         setAdapter(mAdapter);
+        // decor lại item, chủ yếu là margin
         addItemDecoration(new MessageItemDecorator());
-
+        // đây chỉ mới init
         mJoinNotificationText = getResources().getString(R.string.live_system_notification_member_joined);
         mLeaveNotificationText = getResources().getString(R.string.live_system_notification_member_left);
     }
@@ -100,6 +101,7 @@ public class LiveRoomMessageList extends RecyclerView {
             }
         }
         mAdapter.addMessage(item);
+        // load theo cái nào mới nhất
         mLayoutManager.scrollToPosition(mAdapter.getItemCount() - 1);
         mAdapter.notifyDataSetChanged();
     }
@@ -145,6 +147,7 @@ public class LiveRoomMessageList extends RecyclerView {
         }
 
         void addMessage(LiveMessageItem item) {
+            // max list là 50, nếu max xóa bớt
             if (mMessageList.size() == MAX_SAVED_MESSAGE) {
                 mMessageList.remove(mMessageList.size() - 1);
             }
@@ -180,6 +183,7 @@ public class LiveRoomMessageList extends RecyclerView {
             layout.setBackgroundResource(background);
 
             String text = mNarrow ? user + ": " : user + ":  " + message;
+            // Spannable object là custom text
             SpannableString messageSpan = new SpannableString(text);
             messageSpan.setSpan(new StyleSpan(Typeface.BOLD),
                     0, user.length() + 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
@@ -196,6 +200,7 @@ public class LiveRoomMessageList extends RecyclerView {
         }
     }
 
+    // ItemDecoration decor item
     private static class MessageItemDecorator extends ItemDecoration {
         @Override
         public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,

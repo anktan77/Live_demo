@@ -20,7 +20,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.live_demo.ClientProxyListener;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.interfaces.LoginService;
+import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.ui.live.AboutActivity;
 import com.example.live_demo.ui.live.ModifyUserNameActivity;
@@ -30,6 +33,13 @@ import com.example.live_demo.utils.UserUtil;
 import com.example.live_demo.vlive.Config;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MeFragment extends AbstractFragment implements View.OnClickListener {
@@ -41,10 +51,12 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
     private AppCompatTextView mProfileTitleNameText;
     private AppCompatImageView appCompatImageView;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Config.UserProfile profile = config().getUserProfile();
+
         mLayout = inflater.inflate(R.layout.fragment_me, container, false);
         setUserIcon(mLayout.findViewById(R.id.user_profile_icon));
         appCompatImageView = mLayout.findViewById(R.id.user_profile_icon);
@@ -60,6 +72,8 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
         mLayout.findViewById(R.id.user_profile_about_layout).setOnClickListener(this);
         return mLayout;
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -157,4 +171,6 @@ public class MeFragment extends AbstractFragment implements View.OnClickListener
     public void onLoginASPRespone(LoginASPResponse response) {
 
     }
+
+
 }

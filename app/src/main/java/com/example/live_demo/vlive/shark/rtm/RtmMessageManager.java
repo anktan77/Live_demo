@@ -84,7 +84,9 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
 
     private RtmMessageManager() {
         mOptions = new SendMessageOptions();
+        // bật Nhắn tin Ngoại tuyến
         mOptions.enableOfflineMessaging = false;
+        // bật tính năng Nhắn tin lịch sử
         mOptions.enableHistoricalMessaging = false;
         mMessageListeners = new ArrayList<>();
     }
@@ -109,6 +111,7 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
             return;
         }
 
+        // tham gia vào kênh chát
         mRtmChannel = mRtmClient.createChannel(channel, this);
         mRtmChannel.join(callback);
     }
@@ -120,6 +123,8 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
         mRtmChannel = null;
     }
 
+    // tiến hành gửi
+    // message chính là json
     private void sendChannelMessage(String message, ResultCallback<Void> callback) {
         if (mRtmChannel == null) return;
         RtmMessage msg = mRtmClient.createMessage(message);
@@ -127,13 +132,16 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
     }
 
     public void sendChatMessage(String userId, String nickname, String content, ResultCallback<Void> callback) {
+        // getChatMessageJsonString(userId, nickname, content)
+        // được ép về dạng JSON
         String json = getChatMessageJsonString(userId, nickname, content);
         sendChannelMessage(json, callback);
     }
 
     private String getChatMessageJsonString(String userId, String nickname, String content) {
         ChatMessage data = new ChatMessage(userId, nickname, content);
-        return new GsonBuilder().create().toJson(data); //chuyển Json sang obj java
+        // ép kiểu sang Json
+        return new GsonBuilder().create().toJson(data);
     }
 
     public void registerMessageHandler(RtmMessageListener handler) {
@@ -279,10 +287,10 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
 
     @Override
     public void onMessageReceived(RtmMessage rtmMessage, RtmChannelMember fromMember) {
-        // Where channel messages are received
+        // Nơi nhận tin nhắn kênh
         String json = rtmMessage.getText();
         XLog.d("Channel message: " + rtmMessage.getText());
-
+        // gson giúp dễ dàng parse string json sang JSONObject
         Gson gson = new Gson();
         int cmd = -1;
         try {
@@ -337,6 +345,8 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
     }
 
     private void handleChatMessage(@NonNull RtmMessageListener listener, ChatMessage message) {
+        // post qua onRtmChannelMessageReceived
+        // ở liveroomactivity để chạy đa luồng. thêm vào list chat
         if (mHandler != null) {
             mHandler.post(() -> listener.onRtmChannelMessageReceived(
                     message.data.fromUserId, message.data.fromUserName, message.data.message));

@@ -653,6 +653,7 @@ public class Client {
                         listener.onResponseError(Request.SEND_GIFT, ERROR_NULL,
                                 response.errorBody() == null ? MSG_NULL_RESPONSE : response.errorBody().toString());
                     } else if (sendGiftResponse.code == ERROR_OK) {
+                        // cái này không quan trọng lắm
                         listener.onSendGiftResponse(sendGiftResponse);
                     } else {
                         listener.onResponseError(Request.SEND_GIFT, sendGiftResponse.code, sendGiftResponse.msg);

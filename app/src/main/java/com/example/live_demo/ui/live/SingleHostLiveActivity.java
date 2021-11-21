@@ -154,19 +154,22 @@ public class SingleHostLiveActivity extends LiveRoomActivity implements View.OnC
                                     SeatInfo.User.USER_AUDIO_ENABLE,
                             response.data.room.owner.enableVideo !=
                                     SeatInfo.User.USER_VIDEO_ENABLE);
+
+                    if (config().getUserProfile().getImageUrl() == ""){
+                        mNamePad.setIconNotUrl(UserUtil.getUserRoundIcon(getResources(),
+                                response.data.room.owner.userId));
+                    }
+                    else {
+                        mNamePad.setIconUrl(config().getUserProfile().getImageUrl());
+                    }
                 } else {
                     becomeAudience();
+                    mNamePad.setIconNotUrl(UserUtil.getUserRoundIcon(getResources(),
+                            response.data.room.owner.userId));
                 }
 
                 mNamePad.setName(response.data.room.owner.userName);
 
-                if (config().getUserProfile().getImageUrl() == ""){
-                    mNamePad.setIconNotUrl(UserUtil.getUserRoundIcon(getResources(),
-                            response.data.room.owner.userId));
-                }
-                else {
-                    mNamePad.setIconUrl(config().getUserProfile().getImageUrl());
-                }
             });
         }
     }
