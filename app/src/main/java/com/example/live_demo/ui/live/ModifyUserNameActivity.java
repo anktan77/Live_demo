@@ -90,9 +90,6 @@ public class ModifyUserNameActivity extends BaseActivity
 
             mNewName = mNameEditText.getText().toString();
             if (!mNewName.equals(mOldName)) {
-                UserRequest request = new UserRequest(config().getUserProfile().getToken(),
-                        config().getUserProfile().getUserId(), mNewName);
-                sendRequest(Request.EDIT_USER, request);
                 postEditName();
             } else {
                 finish();
@@ -115,7 +112,13 @@ public class ModifyUserNameActivity extends BaseActivity
                     Toast.makeText(ModifyUserNameActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                 }
                 if (code == 1){
+                    UserRequest request = new UserRequest(config().getUserProfile().getToken(),
+                            config().getUserProfile().getUserId(), mNewName);
+                    sendRequest(Request.EDIT_USER, request);
                     profile.setUserName(mNewName);
+                }
+                if (code == 2){
+                    Toast.makeText(ModifyUserNameActivity.this, "User name đã tồn tại", Toast.LENGTH_SHORT).show();
                 }
             }
 
