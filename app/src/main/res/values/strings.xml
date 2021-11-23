@@ -25,7 +25,7 @@
     <string name="room_list_fail_to_obtain_data_hint">Tải dữ liệu thất bại,vui lòng thử lại</string>
     <string name="room_list_network_error_title">Kết nối mạng thất bại</string>
     <string name="room_list_network_error_message">Không có kết nối mạng</string>
-
+    <string name="recharge_coin_title">Nạp coins</string>
     <!-- My Profile Fragment -->
     <string name="profile_item_title_avatar">Hồ sơ</string>
     <string name="profile_item_title_nickname">Tên</string>
@@ -636,7 +636,7 @@ Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for 
     <string name="live_room_tool_action_sheet_title_inear">Tai nghe</string>
     <string name="live_room_tool_action_sheet_title_apply">Áp dụng</string>
     <string name="button_text_done">Xong</string>
-
+    <string name="recharge_coin_done">Nạp</string>
     <string name="modify_user_name_too_long">Tên người dùng không được dài hơn 15 chữ cái</string>
     <string name="modify_user_name_empty">Tên ngươi dùng không được để trống</string>
     <string name="modify_user_name_error">Sửa đổi tên người dùng không thành công</string>

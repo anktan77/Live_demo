@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileUserActivity extends BaseActivity implements View.OnClickListener {
 
-    private AppCompatTextView mSignOutBtn, mProfileEmail, mProfileCoins;
+    private AppCompatTextView mSignOutBtn, mProfileEmail, mProfileCoins,mRechargeCoin;
     private AppCompatImageView mCloseProfile;
     GoogleSignInClient mGoogleSignInClient;
 
@@ -86,6 +86,8 @@ public class ProfileUserActivity extends BaseActivity implements View.OnClickLis
         mProfileEmail = (AppCompatTextView) findViewById(R.id.profile_user_email_text);
         mProfileCoins = (AppCompatTextView) findViewById(R.id.conis_user);
         mProfileEmail.setText(profile.getEmail());
+        mRechargeCoin = (AppCompatTextView) findViewById(R.id.profile_user_add_coin_btn);
+        mRechargeCoin.setOnClickListener(this);
     }
 
     @Override
@@ -97,7 +99,16 @@ public class ProfileUserActivity extends BaseActivity implements View.OnClickLis
             case R.id.profile_user_activity_close:
                 closeProfileUser();
                 break;
+            case R.id.profile_user_add_coin_btn:
+                intentRechargeCoin();
+                break;
         }
+    }
+
+    private void intentRechargeCoin() {
+        Intent intent = new Intent(ProfileUserActivity.this,RechargeCoinActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void closeProfileUser() {

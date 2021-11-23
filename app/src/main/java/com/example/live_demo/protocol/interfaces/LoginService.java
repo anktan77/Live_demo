@@ -1,5 +1,7 @@
 package com.example.live_demo.protocol.interfaces;
 
+import android.text.Editable;
+
 import com.example.live_demo.protocol.model.body.CommitGiftBody;
 import com.example.live_demo.protocol.model.request.LoginASPRequest;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
@@ -22,4 +24,10 @@ public interface LoginService {
 
     @POST("api/customers/CommitGift/")
     Call<Integer> requestCommitGift(@Body CommitGiftBody body);
+
+    @POST("api/customers/RechargeCoin/")
+    Call<Integer> requestRechargeCoin(@Query("email") String email, @Query("rechargeCoin") int rechargeCoin);
+
+    @POST("api/customers/EditName/")
+    Call<Integer> requestEditName(@Query("email") String email, @Query("editName") String editName);
 }

@@ -12,14 +12,23 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.live_demo.BaseActivity;
 import com.example.live_demo.R;
+import com.example.live_demo.protocol.interfaces.LoginService;
 import com.example.live_demo.protocol.model.request.Request;
 import com.example.live_demo.protocol.model.request.UserRequest;
 import com.example.live_demo.protocol.model.response.EditUserResponse;
 import com.example.live_demo.protocol.model.response.LoginASPResponse;
 import com.example.live_demo.utils.Global;
+import com.example.live_demo.vlive.Config;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ModifyUserNameActivity extends BaseActivity
         implements View.OnClickListener, TextWatcher {
@@ -29,7 +38,8 @@ public class ModifyUserNameActivity extends BaseActivity
     private AppCompatEditText mNameEditText;
     private String mNewName;
     private String mOldName;
-
+    private static Retrofit retrofit;
+    private static final String Base_Url = "http://10.0.2.2:8097";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,15 @@ public class ModifyUserNameActivity extends BaseActivity
         mDoneBtn.setEnabled(mNameEditText.length() > 0);
     }
 
+    public static Retrofit getRetrofit(){
+
+        if (retrofit == null){
+            retrofit = new Retrofit.Builder().baseUrl(Base_Url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
     @Override
     protected void onGlobalLayoutCompleted() {
         View topLayout = findViewById(R.id.modify_user_name_title_layout);
@@ -74,6 +93,7 @@ public class ModifyUserNameActivity extends BaseActivity
                 UserRequest request = new UserRequest(config().getUserProfile().getToken(),
                         config().getUserProfile().getUserId(), mNewName);
                 sendRequest(Request.EDIT_USER, request);
+                postEditName();
             } else {
                 finish();
             }
@@ -81,6 +101,29 @@ public class ModifyUserNameActivity extends BaseActivity
             setResult(Global.Constants.EDIT_USER_NAME_RESULT_CANCEL);
             finish();
         }
+    }
+
+    private void postEditName() {
+        Config.UserProfile profile = config().getUserProfile();
+        String email = profile.getEmail();
+        LoginService loginService =getRetrofit().create(LoginService.class);
+        loginService.requestEditName(email,mNewName).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                int code = response.body();
+                if (code == 0){
+                    Toast.makeText(ModifyUserNameActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                }
+                if (code == 1){
+                    profile.setUserName(mNewName);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override

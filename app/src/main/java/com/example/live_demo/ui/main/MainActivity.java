@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
     private NavController mNavController;
     private int mAppIdTryCount;
     private PrivacyTermsDialog termsDialog;
-    String personName;
+    String getName;
     String ImageView;
     String personEmail;
     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity {
         super.onStart();
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-            personName = acct.getDisplayName();
+            String personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
             String personFamilyName = acct.getFamilyName();
             personEmail = acct.getEmail();
@@ -175,7 +175,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onLoginASPRespone(LoginASPResponse response) {
-
+        Config.UserProfile profile = config().getUserProfile();
+        getName = response.Name;
+        profile.setUserName(response.Name);
     }
     // quy trình: Override luôn thực hiện đầu tiên
 
@@ -210,7 +212,7 @@ public class MainActivity extends BaseActivity {
     //lưu user profile vào Share references
     private void initUserFromStorage(Config.UserProfile profile) {
         profile.setUserId(preferences().getString(Global.Constants.KEY_PROFILE_UID, null));
-        profile.setUserName(preferences().getString(Global.Constants.KEY_USER_NAME, null));
+//        profile.setUserName(preferences().getString(Global.Constants.KEY_USER_NAME, null));
         profile.setImageUrl(preferences().getString(Global.Constants.KEY_IMAGE_URL, null));
         profile.setToken(preferences().getString(Global.Constants.KEY_TOKEN, null));
     }
@@ -218,7 +220,7 @@ public class MainActivity extends BaseActivity {
     private void createUser() {
         //random username trong class randomUtil
 //        String userName = RandomUtil.randomUserName(this);
-        String userName = personName;
+        String userName = getName;
         String email = personEmail;
         String imageUrl = ImageView;
         //truyền vào config().getUserProfile()
