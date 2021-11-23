@@ -31,6 +31,9 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_normal.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/virtual_image_option_bg_selected.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-hdpi/white_circle.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-mdpi/onboarding_activity_button_4.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-mdpi/onboarding_activity_ic_image_4.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-mdpi/onboarding_activity_ic_waves_4.xml" value="0.23981481481481481" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color_disable.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/drawable-v24/modify_user_name_done_btn_color_normal.xml" value="0.26666666666666666" />
@@ -91,6 +94,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_tool_item.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/action_voice.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_about.xml" value="0.2151268115942029" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_boarding.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_disclaimer.xml" value="0.2151268115942029" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_live_prepare.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/activity_login.xml" value="0.19927536231884058" />
@@ -119,6 +123,10 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/live_room_setting_list_item_text_only.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/message_item_gift_layout.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/message_item_layout.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/onboarding_1.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/onboarding_2.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/onboarding_3.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/onboarding_4.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/online_user_call_invite_layout.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/product_list_item_layout.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Live_demo/app/src/main/res/layout/seat_item_popup_multi.xml" value="0.2006340579710145" />

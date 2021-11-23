@@ -49,4 +49,11 @@
     <color name="whiteTextColor">#fff</color>
 
     <color name="primaryTextColor">#050D3C</color>
+
+    <color name="blackNavy">#10101C</color>
+    <color name="next_1">#8B88DC</color>
+    <color name="next_2">#0183C5</color>
+    <color name="next_3">#2F6DFF</color>
+    <color name="next_4">#5FA091</color>
+    <color name="dark_navy">#0E2132</color>
 </resources>
