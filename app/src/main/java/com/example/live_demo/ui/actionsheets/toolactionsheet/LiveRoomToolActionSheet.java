@@ -30,20 +30,21 @@ public class LiveRoomToolActionSheet extends AbstractActionSheet {
     private static final int FUNC_COUNT_AUDIENCE = 1;
     private static final int FUNC_COUNT_VIRTUAL_IMAGE = 3;
 
-    private static final int DATA_INDEX = 0;
-    private static final int SPEAKER_INDEX = 1;
-    private static final int EAR_MONITOR = 2;
-    private static final int SETTING_INDEX = 3;
-    private static final int ROTATE_INDEX = 4;
-    private static final int VIDEO_INDEX = 5;
+//    private static final int DATA_INDEX = 0;
+
+//    private static final int EAR_MONITOR = 2;
+    private static final int SPEAKER_INDEX = 0;
+    private static final int SETTING_INDEX = 1;
+    private static final int ROTATE_INDEX = 2;
+//    private static final int VIDEO_INDEX = 5;
 
     private static final int[] ICON_RES = {
-            R.drawable.icon_data,
+//            R.drawable.icon_data,
             R.drawable.action_sheet_tool_speaker,
-            R.drawable.action_sheet_tool_ear_monitor,
+//            R.drawable.action_sheet_tool_ear_monitor,
             R.drawable.icon_setting,
             R.drawable.icon_rotate,
-            R.drawable.action_sheet_tool_video
+//            R.drawable.action_sheet_tool_video
     };
 
     private RecyclerView mRecycler;
@@ -108,13 +109,15 @@ public class LiveRoomToolActionSheet extends AbstractActionSheet {
             toolViewHolder.name.setText(mToolNames[position]);
             toolViewHolder.icon.setImageResource(ICON_RES[position]);
 
-            if (position == VIDEO_INDEX) {
-                holder.itemView.setActivated(!mMuteVideo);
-            } else if (position == SPEAKER_INDEX) {
-                holder.itemView.setActivated(!mMuteVoice);
-            } else if (position == EAR_MONITOR) {
-                holder.itemView.setActivated(mEarMonitoring);
-            }
+//            if (position == VIDEO_INDEX) {
+//                holder.itemView.setActivated(!mMuteVideo);
+             if (position == SPEAKER_INDEX) {
+                 holder.itemView.setActivated(!mMuteVoice);
+             }
+//            }
+//            } else if (position == EAR_MONITOR) {
+//                holder.itemView.setActivated(mEarMonitoring);
+//            }
         }
 
         @Override
@@ -138,10 +141,10 @@ public class LiveRoomToolActionSheet extends AbstractActionSheet {
             name = itemView.findViewById(R.id.live_room_action_sheet_tool_item_name);
             icon = itemView.findViewById(R.id.live_room_action_sheet_tool_item_icon);
             icon.setOnClickListener(view ->  {
-                if (position == VIDEO_INDEX) {
-                    mMuteVideo = !mMuteVideo;
-                    itemView.setActivated(!mMuteVideo);
-                } else if (position == SPEAKER_INDEX) {
+//                if (position == VIDEO_INDEX) {
+//                    mMuteVideo = !mMuteVideo;
+//                    itemView.setActivated(!mMuteVideo);
+                 if (position == SPEAKER_INDEX) {
                     mMuteVoice = !mMuteVoice;
                     itemView.setActivated(!mMuteVoice);
                 }
@@ -158,28 +161,28 @@ public class LiveRoomToolActionSheet extends AbstractActionSheet {
         if (mListener == null) return;
 
         switch (position) {
-            case DATA_INDEX:
-                mListener.onActionSheetRealDataClicked();
-                break;
+//            case DATA_INDEX:
+//                mListener.onActionSheetRealDataClicked();
+//                break;
             case SETTING_INDEX:
                 mListener.onActionSheetSettingClicked();
                 break;
             case ROTATE_INDEX:
                 mListener.onActionSheetRotateClicked();
                 break;
-            case VIDEO_INDEX:
-                mListener.onActionSheetVideoClicked(mMuteVideo);
-                break;
+//            case VIDEO_INDEX:
+//                mListener.onActionSheetVideoClicked(mMuteVideo);
+//                break;
             case SPEAKER_INDEX:
                 mListener.onActionSheetSpeakerClicked(mMuteVoice);
                 break;
-            case EAR_MONITOR:
-                boolean allowed = mListener.onActionSheetEarMonitoringClicked(!mEarMonitoring);
-                if (allowed) {
-                    mEarMonitoring = !mEarMonitoring;
-                    view.setActivated(mEarMonitoring);
-                }
-                break;
+//            case EAR_MONITOR:
+//                boolean allowed = mListener.onActionSheetEarMonitoringClicked(!mEarMonitoring);
+//                if (allowed) {
+//                    mEarMonitoring = !mEarMonitoring;
+//                    view.setActivated(mEarMonitoring);
+//                }
+//                break;
         }
     }
 

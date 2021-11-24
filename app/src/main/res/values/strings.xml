@@ -193,12 +193,12 @@
     </string-array>
 
     <string-array name="live_room_action_sheet_tool_names">
-        <item>Dữ liệu</item>
+<!--        <item>Dữ liệu</item>-->
         <item>Người nói</item>
-        <item>Tai Nghe</item>
+<!--        <item>Tai Nghe</item>-->
         <item>Cài đặt</item>
         <item>Thanh cuộn</item>
-        <item>Máy ảnh</item>
+<!--        <item>Máy ảnh</item>-->
     </string-array>
 
     <string name="user_terms_1">
