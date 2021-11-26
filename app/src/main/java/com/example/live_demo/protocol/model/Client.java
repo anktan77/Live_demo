@@ -62,7 +62,7 @@ import retrofit2.internal.EverythingIsNonNull;
 public class Client {
 
     private static final String PRODUCT_URL = "https://api-solutions.sh.agoralab.co";
-    private static final String LOGIN_ASP = "http://10.0.2.2:8097";
+    private static final String LOGIN_ASP = "http://192.168.1.5:8097";
     private static final String MSG_NULL_RESPONSE = "Response content is null";
     private static final int MAX_RESPONSE_THREAD = 10;
     private static final int DEFAULT_TIMEOUT_IN_SECONDS = 30;

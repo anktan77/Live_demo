@@ -581,7 +581,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
     }
 
     private static Retrofit retrofit;
-    private static final String Base_Url = "http://10.0.2.2:8097";
+    private static final String Base_Url = "http://192.168.1.5:8097";
 
     public static Retrofit getRetrofit(){
 
