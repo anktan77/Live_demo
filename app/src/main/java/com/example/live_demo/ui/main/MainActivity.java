@@ -120,9 +120,6 @@ public class MainActivity extends BaseActivity {
             int currentId = mNavController.getCurrentDestination() == null ?
                     0 : mNavController.getCurrentDestination().getId();
 
-            // Do not respond to this click event because
-            // we do not want to refresh this fragment
-            // by repeatedly selecting the same menu item.
             if (selectedId == currentId) return false;
             NavigationUI.onNavDestinationSelected(item, mNavController);
             hideStatusBar(getWindow(), true);
@@ -140,11 +137,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private void changeItemHeight(@NonNull BottomNavigationView navView) {
-        // Bottom navigation menu uses a hardcode menu item
-        // height which cannot be changed by a layout attribute.
-        // Change the item height using reflection for
-        // a comfortable padding between icon and label.
+
         int itemHeight = getResources().getDimensionPixelSize(R.dimen.nav_bar_height);
+        // getChildAt () trả về dạng xem ở vị trí được chỉ định
+        // hoặc null nếu vị trí không tồn tại trong nhóm
+        // vị trí chỉ định index = 0; là home
         BottomNavigationMenuView menu =
                 (BottomNavigationMenuView) navView.getChildAt(0);
         try {

@@ -50,8 +50,8 @@ public abstract class VideoCapture extends VideoProducer {
 
     private static final String TAG = VideoCapture.class.getSimpleName();
 
-    // The angle (0, 90, 180, 270) that the image needs to be rotated to show in
-    // the display's native orientation.
+    // Góc (0, 90, 180, 270) mà hình ảnh cần được xoay để hiển thị
+    // hướng gốc của màn hình.
     int pCameraNativeOrientation;
 
     // In some occasions we need to invert the device rotation readings, see the
@@ -82,13 +82,11 @@ public abstract class VideoCapture extends VideoProducer {
         pContext = context;
     }
 
-    // tất cả phương thức này thực hiện ở VideoCaptureCamera2
+
     public abstract boolean allocate(int width, int height, int frameRate, int facing);
 
-    // thực hiện ở lớp VideoCaptureCamera2
     public abstract void startCaptureMaybeAsync(boolean needsPreview);
 
-    // Blocks until it is guaranteed that no more frames are sent.
     public abstract void stopCaptureAndBlockUntilStopped();
 
     public abstract void deallocate(boolean disconnect);
@@ -101,16 +99,7 @@ public abstract class VideoCapture extends VideoProducer {
         stateListener = listener;
     }
 
-    /**
-     * Finds the frame rate range matching |targetFrameRate|.
-     * Tries to find a range with as low of a minimum value as
-     * possible to allow the camera adjust based on the lighting conditions.
-     * Assumes that all frame rate values are multiplied by 1000.
-     *
-     * This code is mostly copied from WebRTC:
-     * CameraEnumerationAndroid.getClosestSupportedFramerateRange
-     * in webrtc/api/android/java/src/org/webrtc/CameraEnumerationAndroid.java
-     */
+
     static FrameRateRange getClosestFrameRateRange(
             final List<FrameRateRange> frameRateRanges, int targetFrameRate) {
         return Collections.min(frameRateRanges, new Comparator<FrameRateRange>() {
@@ -161,10 +150,10 @@ public abstract class VideoCapture extends VideoProducer {
         boolean mirrored = (mFacing == Constant.CAMERA_FACING_FRONT);
 
         VideoCaptureFrame frame = new VideoCaptureFrame(
-                // The format may be changed during processing.
-                // Create a copy of the format config to avoid
-                // the original format instance from being
-                // modified unexpectedly.
+                // Định dạng có thể bị thay đổi trong quá trình xử lý.
+                // Tạo một bản sao của cấu hình định dạng để tránh
+                // phiên bản định dạng ban đầu bị
+                // sửa đổi bất ngờ.
                 pCaptureFormat.copy(),
                 pPreviewSurfaceTexture,
                 pPreviewTextureId,

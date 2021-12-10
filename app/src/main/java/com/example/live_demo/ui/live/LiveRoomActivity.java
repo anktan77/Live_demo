@@ -575,8 +575,6 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
             String to = TextUtils.isEmpty(toUserName) ? toUserId : toUserName;
             commitGift(fromUserName, toUserName, giftId);
 
-
-
         });
     }
 

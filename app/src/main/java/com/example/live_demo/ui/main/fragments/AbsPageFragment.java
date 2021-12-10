@@ -40,7 +40,7 @@ public abstract class AbsPageFragment extends AbstractFragment implements SwipeR
     private static final int SPAN_COUNT = 2;
     private static final int REFRESH_DELAY = 1000 * 60;
 
-    // By default, the client asks for 10 more rooms to show in the list
+    // Theo mặc định, khách hàng yêu cầu thêm 10 phòng để hiển thị trong danh sách
     private static final int REQ_ROOM_COUNT = 10;
 
     private Handler mHandler;

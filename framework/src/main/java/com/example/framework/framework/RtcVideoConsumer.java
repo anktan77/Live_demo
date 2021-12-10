@@ -16,7 +16,8 @@ import io.agora.rtc.video.AgoraVideoFrame;
 
 public class RtcVideoConsumer implements IVideoConsumer, IVideoSource {
     private static final String TAG = RtcVideoConsumer.class.getSimpleName();
-
+//    Từ khóa volatile được sử dụng để đánh dấu
+//    một biến Java là "đã được lưu trữ trong bộ nhớ chính".
     private volatile IVideoFrameConsumer mRtcConsumer;
     private volatile boolean mValidInRtc;
 

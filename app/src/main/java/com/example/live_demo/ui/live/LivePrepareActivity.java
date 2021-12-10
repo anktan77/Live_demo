@@ -119,6 +119,7 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
 
         // ChannelManager.ChannelID.CAMERA = 0;
         // lấy camera2
+        // không quan trọng
         mCameraChannel = (CameraVideoChannel) VideoModule.instance().
                 getVideoChannel(ChannelManager.ChannelID.CAMERA);
         mPreprocessor = (PreprocessorFaceUnity) VideoModule.instance().
@@ -376,9 +377,6 @@ public class LivePrepareActivity extends LiveBaseActivity implements View.OnClic
         super.onStop();
         if (!mCameraPersist && mCameraChannel != null && !mActivityFinished
                 && mCameraChannel.hasCaptureStarted()) {
-            // Stop camera capture when this activity
-            // goes to background, but not because
-            // of being finished.
             mCameraChannel.stopCapture();
         }
     }

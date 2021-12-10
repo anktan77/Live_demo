@@ -71,8 +71,9 @@ public class CameraManager {
         // Bộ tiền xử lý phải được đặt trước
         // kênh video bắt đầu
         videoModule.setPreprocessor(CHANNEL_ID, preprocessor);
-        // *
+        // * cái này quan trọng, phải thiết lập module.instance
         videoModule.startChannel(CHANNEL_ID);
+
         mCameraChannel = (CameraVideoChannel)
                 videoModule.getVideoChannel(CHANNEL_ID);
         mCameraChannel.setFacing(facing);

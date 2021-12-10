@@ -36,8 +36,14 @@ public class VideoCaptureCamera2 extends VideoCapture {
         @Override
         public void onOpened(CameraDevice cameraDevice) {
             Log.e(TAG, "CameraDevice.StateCallback onOpened");
+            // khi mở Camera thành công thì gán vào biến "mCameraDevice"
+            // về sau chung ta chỉ sử dụng biến "cameraDevie" để mở các kết nối, thực hiện các thao tác khác
             mCameraDevice = cameraDevice;
+
+//            thay đổi trạng thái máy ảnh và thông báo
             changeCameraStateAndNotify(CameraState.CONFIGURING);
+
+//            tạo các đối tượng xem trước và bắt đầu xem trước hoặc thất bại ()
             createPreviewObjectsAndStartPreviewOrFail();
             firstFrame = true;
         }
@@ -287,6 +293,7 @@ public class VideoCaptureCamera2 extends VideoCapture {
         mCameraManager = (CameraManager) pContext.getSystemService(Context.CAMERA_SERVICE);
     }
 
+    // hiệu chỉnh camera trước sau
     @Override
     public boolean allocate(int width, int height, int frameRate, int facing) {
         Log.d(TAG, "allocate: requested width: " + width + " height: " + height + " fps: " + frameRate);
@@ -323,8 +330,9 @@ public class VideoCaptureCamera2 extends VideoCapture {
         final StreamConfigurationMap streamMap =
                 cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
-        // Find closest supported size.
+        // Tìm kích thước được hỗ trợ gần nhất.
         final Size[] supportedSizes = streamMap.getOutputSizes(ImageFormat.YUV_420_888);
+        // Set Size để hiển thị lên màn hình
         final Size closestSupportedSize = findClosestSizeInArray(supportedSizes, width, height);
         if (closestSupportedSize == null) {
             Log.e(TAG, "No supported resolutions.");

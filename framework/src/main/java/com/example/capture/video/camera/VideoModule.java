@@ -31,7 +31,7 @@ public class VideoModule {
 
     }
 
-
+    // khi khai báo VideoModule nó sẽ chạy cái init
     public void init(Context context) {
         mChannelManager = new ChannelManager(context);
         mHasInitialized = true;

@@ -108,14 +108,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
         });
     }
 
-    /**
-     * Give a chance to obtain view layout attributes when the
-     * content view layout process is completed.
-     * Some layout attributes will be available here but not
-     * in onCreate(), like measured width/height.
-     * This callback will be called ONLY ONCE before the whole
-     * window content is ready to be displayed for first time.
-     */
+
     protected void onGlobalLayoutCompleted() {
 
     }
@@ -167,20 +160,15 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 if (mActionSheetStack.isEmpty()) {
-                    // Happens only in case of errors.
+
                     return;
                 }
 
                 if (sheet != mActionSheetStack.peek()) {
-                    // When this action sheet is not at the top of
-                    // stack, it means that a new action sheet
-                    // is about to be shown and it needs a fallback
-                    // history, and this sheet needs to be retained.
+
                     return;
                 }
 
-                // At this moment, we want to fallback to
-                // the previous action sheet if exists.
                 mActionSheetStack.pop();
                 if (!mActionSheetStack.isEmpty()) {
                     AbstractActionSheet sheet = mActionSheetStack.peek();

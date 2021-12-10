@@ -235,9 +235,7 @@ public class VideoChannel extends HandlerThread {
                 Log.d(TAG, "Off-screen consumer disconnected:" + consumer);
                 if (mOnScreenConsumers.isEmpty() &&
                         mOffScreenConsumers.isEmpty()) {
-                    // If there's no consumer after remove
-                    // this off screen consumer, the OpenGL
-                    // drawing surface must be reset
+
                     resetOpenGLSurface();
                 }
             }
@@ -300,7 +298,7 @@ public class VideoChannel extends HandlerThread {
 
     private void checkThreadRunningState() {
         if (!isAlive()) {
-            throw new IllegalStateException("Video Channel is not alive");
+            throw new IllegalStateException("Kênh video không tồn tại");
         }
     }
 

@@ -51,6 +51,7 @@ public class TextureViewConsumer extends BaseWindowConsumer implements TextureVi
         setDefault(surface, width, height);
         // lấy camera từ CameraVideoChannel lớp con Cchannel
         // trong CameraVideoChannel có tạo camera2
+
         connectChannel(CHANNEL_ID);
     }
 
