@@ -102,11 +102,7 @@ public class LiveBottomButtonLayout extends RelativeLayout implements View.OnCli
         super.onMeasure(widthMeasureSpec, heightSpec);
     }
 
-    /**
-     * Clear all global settings that are no longer needed
-     * after leaving the live room
-     * @param application
-     */
+
     public void clearStates(SharkLiveApplication application) {
         application.config().setCurrentMusicIndex(-1);
     }

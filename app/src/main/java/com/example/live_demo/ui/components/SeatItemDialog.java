@@ -119,8 +119,7 @@ public class SeatItemDialog extends Dialog implements View.OnClickListener {
 
         if (!isOwner() || mSeatState != LiveMultiHostSeatLayout.SEAT_TAKEN) {
             if (!isOwner()) {
-                // Other hosts are only allowed to
-                // leave their seat by the pop up window
+
                 mOpTextViews[0].setText(mOperations[2]);
             } else if (mSeatState == LiveMultiHostSeatLayout.SEAT_OPEN) {
                 mOpTextViews[0].setText(mOperations[4]);

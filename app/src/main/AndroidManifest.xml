@@ -20,6 +20,7 @@
         android:name=".utils.SharkLiveApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
+        android:icon="@drawable/live_streaming"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">

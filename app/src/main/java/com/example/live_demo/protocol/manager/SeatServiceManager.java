@@ -13,10 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-/**
- * Manages seat requests, including interactions between
- * room owners and audience, and seat state changes.
- */
+
 public class SeatServiceManager {
     public static class SeatApplicationUserInfo {
         public String userId;

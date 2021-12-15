@@ -104,9 +104,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
 
     private LiveRoomUserListActionSheet mRoomUserActionSheet;
 
-    // Rtc Engine requires that the calls of startAudioMixing
-    // should not be too frequent if online musics are played.
-    // The interval is better not to be fewer than 100 ms.
+
     private volatile long mLastMusicPlayedTimeStamp;
 
     private boolean mActivityFinished;
@@ -670,8 +668,7 @@ public abstract class LiveRoomActivity extends LiveBaseActivity implements
         super.onStop();
         if ((isHost || isOwner) && !config().isVideoMuted()
                 && !mActivityFinished) {
-            // If now the app goes to background, stop the camera
-            // capture if the host is displaying his video.
+
             stopCameraCapture();
         }
     }

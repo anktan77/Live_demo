@@ -146,7 +146,7 @@ public abstract class VideoCapture extends VideoProducer {
     }
 
     void onFrameAvailable() {
-        // The images from front system camera are mirrored by default.
+
         boolean mirrored = (mFacing == Constant.CAMERA_FACING_FRONT);
 
         VideoCaptureFrame frame = new VideoCaptureFrame(

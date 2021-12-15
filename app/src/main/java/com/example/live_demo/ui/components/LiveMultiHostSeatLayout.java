@@ -30,64 +30,25 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
     private static final int MAX_SEAT = 6;
 
     public interface LiveHostInSeatOnClickedListener {
-        /**
-         * Called when the owner clicks the "+" icon and whats
-         * to select an audience to be the host.
-         * @param position seat position
-         * @param view the view clicked
-         */
+
         void onSeatAdapterHostInviteClicked(int position, View view);
 
-        /**
-         * Called when the audience clicks the "+" icon of a seat
-         * and tells the owner that he wants to be a host
-         * @param position seat position
-         * @param view the view clicked
-         */
+
         void onSeatAdapterAudienceApplyClicked(int position, View view);
 
-        /**
-         * Called when the owner wants to close a seat and
-         * no one can be a host of this seat
-         * @param position seat position
-         * @param view the view clicked
-         */
+
         void onSeatAdapterPositionClosed(int position, View view);
 
-        /**
-         * Called when the "more" button is clicked for other
-         * operations of this seat.
-         * @param position the seat position
-         * @param view the "more" button of this seat
-         * @param seatState current seat states (open, taken or closed)
-         * @param audioMuteState if the seat is taken, the audio mute state of
-         *                  current user
-         */
+
         void onSeatAdapterMoreClicked(int position, View view, int seatState, int audioMuteState);
 
-        /** Called when the video of a seat position needs to be showed.
-         /* The callback method needs to return a SurfaceView.
-         * @param position seat position
-         * @param uid the rtc uid of the user in this seat
-         * @param mine if the seat video belongs to me if I am a host now
-         **/
+
         SurfaceView onSeatAdapterItemVideoShowed(int position, int uid, boolean mine, boolean audioMuted, boolean videoMuted);
 
-        /**
-         * Called when the video of a seat position is about to be removed.
-         * This means that either the host mutes his video, or he leaves
-         * or is forced to leave his seat.
-         * @param position seat position
-         * @param uid rtc uid
-         * @param view the video view of this seat
-         */
+
         void onSeatAdapterItemVideoRemoved(int position, int uid, SurfaceView view, boolean mine, boolean remainsHost);
 
-        /**
-         * Called when I am the host and control my audio mute states
-         * @param position
-         * @param muted
-         */
+
         void onSeatAdapterItemMyAudioMuted(int position, boolean muted);
     }
 
@@ -106,7 +67,7 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
         public int audioMuteState;
         public int videoMuteState;
 
-        // rtc uid used to indicate speaking volumes.
+
         int rtcUid;
         public String userName;
         public String userId;
@@ -252,10 +213,7 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
 
         if (oldSeatState != newSeatState) {
             if (oldSeatState == SEAT_TAKEN && (newSeatState == SEAT_OPEN || newSeatState == SEAT_CLOSED)) {
-                // When the user leaves the seat or is forced to
-                // leave because the owner has close this seat.
-                // In this case, wo should stop the host's camera
-                // remove his surface, and reset the seat state.
+
                 if (mListener != null) {
                     mListener.onSeatAdapterItemVideoRemoved(
                             curSeatState.position, curSeatState.rtcUid, curSeatState.surfaceView,
@@ -272,16 +230,14 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
                     curSeatState.audioMuteState = user.enableAudio;
                 }
             } else if (newSeatState == SEAT_TAKEN && oldSeatState == SEAT_OPEN && user != null) {
-                // The seat has been taken by a host recently.
-                // Different from the case above in that the seat
-                // cannot be taken from the "closed" state.
+
                 SurfaceView surfaceView = null;
                 if (mListener != null && user.enableVideo == MUTE_NONE) {
                     surfaceView = mListener.onSeatAdapterItemVideoShowed(position,
                             user.uid, mMyUserId.equals(user.userId),
                             user.enableAudio != MUTE_NONE, false);
                 } else if (user.enableVideo == VIDEO_MUTED) {
-                    // The new host's video is previously muted
+
                     if (mListener != null) {
                         mListener.onSeatAdapterItemVideoRemoved(
                                 curSeatState.position, curSeatState.rtcUid, curSeatState.surfaceView,
@@ -407,7 +363,7 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
 
             if (item.audioMuteState != SeatInfo.User.USER_AUDIO_ENABLE) {
                 item.voiceState.setVisibility(VISIBLE);
-                item.voiceState.setImageResource(R.drawable.host_seat_item_mute_icon);
+                item.voiceState.setImageResource(R.drawable.mute);
             } else {
                 item.voiceState.setVisibility(GONE);
             }
@@ -422,7 +378,7 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
             item.voiceIndicate.setVisibility(GONE);
 
             if (item.seatState == SEAT_OPEN) {
-                item.operationIcon.setImageResource(R.drawable.live_seat_invite);
+                item.operationIcon.setImageResource(R.drawable.plus);
                 item.operationText.setVisibility(VISIBLE);
                 item.operationText.setText(mIsOwner ?
                         R.string.live_host_in_seat_state_open_host :
@@ -445,9 +401,7 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
         for (IRtcEngineEventHandler.AudioVolumeInfo info : audioVolumes) {
             for (SeatItem item : mSeatList) {
                 if (mIsHost && info.uid == 0 && myRtcUid == item.rtcUid) {
-                    // Need special care here because when I am one of the hosts,
-                    // the uid returned in volume indication is 0.
-                    // Double check is necessary to see if this is my seat
+
                     item.startIndicate();
                 } else if (item.rtcUid == info.uid) {
                     item.startIndicate();

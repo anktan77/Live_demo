@@ -265,18 +265,13 @@ public class VideoChannel extends HandlerThread {
         }
 
         if (mOnScreenConsumers.size() > 0) {
-            // Currently we only render to the latest
-            // registered on-screen consumer.
-            // Multiple on-screen consumers are not supported yet.
+
             mOnScreenConsumers.get(mOnScreenConsumers.size() - 1).onConsumeFrame(frame, mContext);
             makeDummySurfaceCurrent();
         }
 
         if (mOnScreenConsumers.size() > 0 || mOffScreenMode) {
-            // If there is no on-screen consumers connected,
-            // the off-screen consumers cannot actually be
-            // called, unless the channel runs in off-screen
-            // mode.
+
             for (IVideoConsumer consumer : mOffScreenConsumers) {
                 consumer.onConsumeFrame(frame, mContext);
                 makeDummySurfaceCurrent();
@@ -285,12 +280,7 @@ public class VideoChannel extends HandlerThread {
     }
 
     private void makeDummySurfaceCurrent() {
-        // Every time after the preprocessor or consumers do
-        // their jobs, we may need to restore the original
-        // dummy EGL surface. Thus the current EGL context
-        // will remain consistent even if the surfaces or
-        // pixel buffers used by preprocessors or consumers
-        // are destroyed in or out of the OpenGL threads.
+
         if (!mContext.isCurrent(mDummyEglSurface)) {
             mContext.makeCurrent(mDummyEglSurface);
         }
